@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}WhackUp{% endblock %}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" media="screen" type="text/css" href="{{ asset('bundles/whackup/css/bootstrap/css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" media="screen" type="text/css" href="{{ asset('bundles/whackup/css/core.css') }}" />
+    {% block stylesheets %}
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('bundles/whackup/img/whackup.ico') }}" />
+</head>
+
+<body>
+{% block body %}
+
+    <div id="container-tools-menu">
+             <div class="wrap-tools-menu">
+                   <div class="wrap-logo">
+                       <a href="{% block link_logo %} {{ path('whack_up_home') }} {% endblock %}">
+                            <img src="{{asset('bundles/whackup/img/Logo.png') }}" />
+                       </a>
+                   </div>
+                 {% block block_lecteur_dj %}
+                 {% endblock %}
+                 {% block block_menu_user %}
+                 {% endblock %}
+                 {% block block_info_user %}
+                 {% endblock %}
+             </div>
+        </div>
+
+        <div id="container-main">
+
+            <div id="main">
+                {% block block_main %}
+                {% endblock %}
+            </div>
+
+        </div>
+
+{% endblock %}
+    <script type="text/javascript" src="{{asset('bundles/whackup/js/jquery.js') }}"></script>
+{% block javascripts %}
+    <script type="text/javascript" src="{{asset('bundles/whackup/js/main.js') }}"></script>
+{% endblock %}
+</body>
+</html>

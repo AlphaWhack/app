@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}WhackUp{% endblock %}</title>
+        <link rel="stylesheet" media="screen" type="text/css" href="{{ asset('bundles/whackup/css/bootstrap/css/bootstrap.min.css') }}"/>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('bundles/whackup/css/base.css') }}">
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('bundles/whackup/img/whackup.ico') }}" />
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

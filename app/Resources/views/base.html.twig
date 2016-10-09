@@ -1,0 +1,71 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+        <title>{% block title %}Bienvenue sur Whack Up{% endblock %}</title>
+        <link rel="stylesheet" media="screen" type="text/css" href="{{ asset('bundles/whackup/css/bootstrap/css/bootstrap.min.css') }}"/>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('bundles/whackup/css/font/font-awesome.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('bundles/whackup/css/base.css') }}">
+        {% endblock %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('bundles/whackup/img/whackup.ico') }}" />
+
+    </head>
+
+    <body>
+            <header class="m-header">
+                <div class="wrap-side-header">
+                    <div class="header-left">
+                        <img class="logo"src="{{ asset('bundles/whackup/img/Logo.png') }}" alt="WhackUp" title="WhackUp" />
+                    </div>
+                    <div class="header-right">
+                        {% block link_form %}{% endblock %}
+                            <a class="link-space" href="{{ path('admin_login') }}">Espace</a>
+                            <a class="link-blog" href="">Whack'blog</a>
+                    </div>
+                </div>
+            </header>
+
+            <div id="main">
+                <div class="description">
+                     Bienvenue sur WhackUp<br/>
+                     Votre plateforme de diffusion live d'animations de clubs
+                </div>
+                <div class="portfolio ">
+                    <div class="side-left">
+                        <div class="side-left-col1">
+                            <iframe src="http://www.youtube.com/embed/VmnIeLmjuHA" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        <div class="side-left-col2"></div>
+                    </div>
+                    <div class="side-right">
+                        <div class="side-right-col1">
+                            {% block form_block %} {% endblock %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <footer class="m-footer">
+                <div class="wrap-content-footer">
+                    <ul>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Privacy & Terms</a></li>
+                        <li><a href="#">Contact us</a></li>
+                    </ul>
+                </div>
+            </footer>
+
+    </body>
+
+    <script type="text/javascript" src="{{ asset('bundles/whackup/js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/whackup/js/main.js') }}"></script>
+    {% block javascripts %}{% endblock %}
+</html>
