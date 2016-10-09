@@ -1,0 +1,139 @@
+{# src/WhackUp/CoreBundle/Resources/views/Disco/index.html.twig #}
+
+{% extends "::core.html.twig" %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" media="screen" type="text/css" href="{{asset('bundles/whackup/css/page.css') }}" />
+    <link rel="stylesheet" media="screen" type="text/css" href="{{asset('bundles/whackup/css/page-tablette.css') }}" />
+{% endblock %}
+
+
+{% block block_lecteur_dj %}
+    <div class="wrap-lecteur"></div>
+{% endblock %}
+
+{% block block_menu_user %}
+                 <div class="wrap-item-menu">
+                        <div class="item">
+                            <a href="{{ path('whack_up_home') }}" > <span class="glyphicon glyphicon-globe"></span> D&eacute;couverte </a>
+                        </div>
+                        <div class="item"> <a href="" >Whackup</a></div>
+                        <div class="item"> <a href="" >Blog </a></div>
+                        <div class="item wrap-icon-search">
+                            <span class="glyphicon glyphicon-search"></span>
+                            <div class="container-search">
+                                <div class="wrap-top-search">
+                                     <div class="form-search">
+                                          <form action="" >
+                                               <input type="text" placeholder="Discothèque" value="Ipsum" />
+                                               <input type="submit" value="Go" />
+                                          </form>
+                                     </div>
+                                </div>
+                                <div class="wrap-bottom-search">
+                                    <div class="title-search">5 R&eacute;sultats pour <span class="green"> Ipsum </span></div>
+                                    <div class="result-search">
+                                        <!----------------- exemple dynamique de liste de disco  ---------------->
+
+                                            <div class="wrap-disco">
+                                                <div class="mood-user <?php if ($i == 2 or $i == 5) echo "like"; ?>"></div>
+                                                <div class="disco">
+                                                    <div class="disco-cover">
+                                                        <img src="{{asset('bundles/whackup/file/disco/Tof-6.jpg') }}" />
+                                                        <div class="wrap-cover-play">
+                                                            <img src="{{asset('bundles/whackup/img/play.png') }}" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="disco-info">
+                                                        <div class="title"> Lorem Ipsum</div>
+                                                        <div class="description">Quo cognito Constantius ultra mortalem modum...</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        <!----------------- fin exemple dynamique de liste de disco  ---------------->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                 </div>
+{% endblock %}
+
+{% block block_info_user %}
+    <div class="wrap-infos-user">
+        <div class="min-profil-notif"> <span class="glyphicon glyphicon-envelope"></span><sup>25</sup></div>
+        <div class="min-profil-name">
+            <div class="pseudo-profil">
+                {{ app.user.username }} <span class="glyphicon glyphicon-menu-down"></span>
+            </div>
+            <div class="other-link-infos">
+                <ul>
+                    <li><a href="{{ path('fos_user_profile_show') }}"> <span class="glyphicon glyphicon-user"></span> Mon profil</a></li>
+                    <li><a href="{{ path('fos_user_security_logout') }}"> <span class="glyphicon glyphicon-off"></span> D&eacute;connexion</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="min-profil-picture">
+            {% if app.user.image == null %}
+                 <img src="{{asset('bundles/whackup/file/profile/none.png') }}" />
+            {% else %}
+                <img src="{{ asset(app.user.image.uploadDir ~ '/' ~ app.user.image.url) }}" alt="{{ app.user.image.url }}" />
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block block_main %}
+                <div class="container-slider">
+                    <h1>Le slider</h1>
+                </div>
+
+                <div class="container-body">
+                      <div class="title-body">
+                          <div class="row">
+                               <div class="col-md-4 m-border-arr active"> <span class="glyphicon glyphicon-cd"></span> Disco </div>
+                               <div class="col-md-4 m-border-arr"> <span class="glyphicon glyphicon-heart"></span> Mes Favoris</div>
+                               <div class="col-md-4 m-border-arr"> <span class="glyphicon glyphicon-map-marker"></span> Autour de moi</div>
+                          </div>
+                      </div>
+                      <div class="body">
+                              <div class="part1 containt-body">
+                                   <!----------------- exemple dynamique de liste de disco  ---------------->
+                                    <div class="wrap-disco">
+                                           <div class="mood-user <?php if ($i == 2 or $i == 5) echo "like"; ?>"></div>
+                                           <div class="disco">
+                                               <div class="disco-cover">
+                                                   <img src="{{asset('bundles/whackup/file/disco/Tof-6.jpg') }}" />
+                                                   <div class="wrap-cover-play">
+                                                       <img src="{{asset('bundles/whackup/img/play.png') }}" />
+                                                   </div>
+                                               </div>
+                                               <div class="disco-info">
+                                                   <div class="title"> Lorem Ipsum</div>
+                                                   <div class="description">Quo cognito Constantius ultra mortalem modum...</div>
+                                               </div>
+                                           </div>
+                                      </div>
+                                   <!----------------- fin exemple dynamique de liste de disco  ---------------->
+                              </div>
+                              <div class="part2 containt-body"></div>
+                              <div class="part3 containt-body"></div>
+                       </div>
+                </div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

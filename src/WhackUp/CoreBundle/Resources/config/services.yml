@@ -1,0 +1,7 @@
+parameters:
+#    whack_up_core.example.class: WhackUp\CoreBundle\Example
+
+services:
+#    whack_up_core.example:
+#        class: %whack_up_core.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

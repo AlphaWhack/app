@@ -1,0 +1,54 @@
+{# src/WhackUp/AdminBundle/Resources/views/Default/login.html.twig #}
+
+{% extends "::manage.html.twig" %}
+
+{% block title %}{{ parent() }} - Administration{% endblock %}
+
+{% block body %}
+
+    <div class="wrap-connect-admin">
+
+        <div class="wrap-logo">
+            <a href="{{ path('fos_user_security_login') }}">
+                 <img class="logo"src="{{ asset('bundles/whackup/img/Logo.png') }}" alt="WhackUp" title="WhackUp" />
+            </a>
+        </div>
+
+        <div class="containt-connect-admin">
+             <div class="title">
+                 WhackUp Connexion
+             </div>
+            <form method='post' action='{{path('admin_login_check')}}' id="form-connexion" novalidate="novalidate" >
+                {#   #}
+                 <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+                {% if error %}
+                    <div class="admin-connexion">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                <div class="form-group ">
+                    <div class="input-group">
+                        <span class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
+                        <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control" placeholder="Login" />
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                        <input type="password" id="password" name="_password" required="required" class="form-control" placeholder="Password"/>
+                    </div>
+                </div>
+                <div class="form-group m-form-connect">
+                    <button type="submit" id="_submit" name="_submit" class="form-control btn btn-default">Sign In</button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+
+{% block javascripts %}
+{% endblock %}

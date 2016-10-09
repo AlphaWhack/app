@@ -1,0 +1,10 @@
+parameters:
+#    whack_up_user.example.class: WhackUp\UserBundle\Example
+
+services:
+    rh_whackup.service.role:
+        class: WhackUp\UserBundle\Services\RoleHierarchyService
+        arguments: ["@security.role_hierarchy"]
+#    whack_up_user.example:
+#        class: %whack_up_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

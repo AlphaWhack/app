@@ -1,0 +1,38 @@
+# src/WhackUp/ManageBundle/Ressources/config/routing.xml
+
+whack_up_manage_homepage:
+    path:     /
+    defaults: { _controller: WhackUpManageBundle:Default:index }
+
+
+admin_login:
+    path:  /login
+    defaults: { _controller: WhackUpManageBundle:Security:login }
+
+admin_login_check:
+    path:  /login_check
+    defaults: { _controller: WhackUpManageBundle:Security:check }   #FOSUserBundle
+
+admin_logout:
+    path:  /logout
+    defaults: { _controller: FOSUserBundle:Security:logout }
+
+admin_profile:
+    path:  /profile
+    defaults: { _controller: FOSUserBundle:Profile:show }
+
+admin_profile_edit:
+    path:  /profile/edit
+    defaults: { _controller: FOSUserBundle:Profile:edit }
+
+admin_param:
+    path:  /parameters
+    defaults: { _controller: WhackUpUserBundle:Profile:parameter }
+
+admin_avatar:
+    path:  /picture
+    defaults: { _controller: WhackUpUserBundle:Profile:picture }
+
+admin_change_password:
+    path:  /profile/change-password
+    defaults: { _controller: WhackUpUserBundle:ChangePassword:changePassword }

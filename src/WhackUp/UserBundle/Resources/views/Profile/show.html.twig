@@ -1,0 +1,32 @@
+{# src/WhackUp/UserBundle/Resources/views/Profile/show.html.twig #}
+
+{% extends "WhackUpUserBundle:Profile:index.html.twig" %}
+
+{#{% block title %}{{ parent() }}  {{ app.user.username }}{% endblock %} #}
+
+
+{% block block_onglet_show %}active{% endblock %}
+
+{% block block_profil %}
+    <div class="wrap-picture-profil">
+    {% if app.user.image == null %}
+         <img src="{{asset('bundles/whackup/file/profile/none.png') }}" />
+    {% else %}
+        <img src="{{ asset(app.user.image.uploadDir ~ '/' ~ app.user.image.url) }}" alt="{{ app.user.image.url }}" />
+    {% endif %}
+    </div>
+
+    <p> <b>{{ 'Login '|trans }}</b> : {{ user.username }}</p>
+    <p><b>{{ 'Adresse email'|trans }}</b> : {{ user.email }}</p>
+    <p><b>{{ 'Derniere connexion'|trans }}</b> : {{ app.user.lastLogin|date('d-m-Y') }} &agrave; {{ app.user.lastLogin|date('H:i:s') }}</p>
+    <p> {{ 'Type de compte'|trans }} : <span class="typ-compte">{{ compte }}</span></p>
+{% endblock %}
+
+
+
+
+
+
+
+
+

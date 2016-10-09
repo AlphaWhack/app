@@ -1,0 +1,59 @@
+{# src/WhackUp/UserBundle/Resources/views/Profile/index.html.twig #}
+
+
+{% if is_granted('ROLE_ADMIN') %}
+    {% set parent = 'WhackUpManageBundle:Default:index.html.twig' %}
+{% else %}
+    {% set parent = 'WhackUpCoreBundle:Disco:index.html.twig' %}
+{% endif %}
+
+{% extends parent %}
+
+
+{% block title %}{{ parent() }} | {{ app.user.username }}{% endblock %}
+
+
+{% block block_main %}
+    <div class="top-profil-user">
+
+        <span class="item-profil {% block block_onglet_show %}{% endblock %}">
+                  <a href="{% if is_granted('ROLE_ADMIN') %} {{ path('admin_profile') }} {% else %} {{ path('fos_user_profile_show') }} {% endif %} ">
+                      <span class="glyphicon glyphicon-user"></span> Profil
+                  </a>
+        </span>
+        <span class="item-profil {% block block_onglet_edit %}{% endblock %}">
+                  <a href="{% if is_granted('ROLE_ADMIN') %} {{ path('admin_profile_edit') }} {% else %} {{ path('fos_user_profile_edit') }} {% endif %} ">
+                      <span class="glyphicon glyphicon-pencil"></span> Modifier
+                  </a>
+        </span>
+        <span class="item-profil {% block block_onglet_avatar %}{% endblock %}">
+                  <a href="{% if is_granted('ROLE_ADMIN') %} {{ path('admin_avatar') }} {% else %} {{ path('whack_up_user_avatar') }} {% endif %} ">
+                      <span class="glyphicon glyphicon-camera"></span> Avatar
+                  </a>
+        </span>
+        <span class="item-profil {% block block_onglet_pass %}{% endblock %}">
+                  <a href="{% if is_granted('ROLE_ADMIN') %} {{ path('admin_change_password') }} {% else %} {{ path('fos_user_change_password') }} {% endif %} ">
+                      <span class="glyphicon glyphicon-lock"></span> Changer Mot de passe
+                  </a>
+        </span>
+        <span class="item-profil {% block block_onglet_param %}{% endblock %}">
+                  <a href="{% if is_granted('ROLE_ADMIN') %} {{ path('admin_param') }} {% else %} {{ path('whack_up_user_param') }} {% endif %} ">
+                      <span class="glyphicon glyphicon-cog"></span> Param&egrave;tres
+                  </a>
+        </span>
+
+    </div>
+    <div class="body-profil-user">
+        {% block block_profil %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+

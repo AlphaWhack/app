@@ -1,0 +1,11 @@
+# src/UserBundle/Ressources/config/routing.yml
+
+whack_up_user_param:
+    path:  /parameters
+    defaults: { _controller: WhackUpUserBundle:Profile:parameter }
+
+whack_up_user_avatar:
+    path:  /picture
+    defaults: { _controller: WhackUpUserBundle:Profile:picture }
+
+

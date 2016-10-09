@@ -1,0 +1,68 @@
+{# src/WhackUp/CoreBundle/Resources/views/Default/index.html.twig #}
+
+{% extends "::base.html.twig" %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block link_form %}
+    <a class="link-connect" href="{{path('fos_user_registration_register')}}"  >S'inscrire</a>
+{% endblock %}
+
+{% block form_block %}
+    <div class="wrap-connexion">
+        <div class="arrow-up"></div>
+
+        <div class="title">Connectez vous d&egrave;s maintenant</div>
+
+        <form method='post' action='{{path('fos_user_security_check')}}' id="form-connexion" novalidate="novalidate" >
+            {#   #}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+            {% if error %}
+                <div class="msg-connexion">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <div class="form-group ">
+                <div class="input-group">
+                    <span class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control" placeholder="Login"  />
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                    <input type="password" id="password" name="_password" required="required" class="form-control" placeholder="Password" />
+                </div>
+            </div>
+            <div class="form-group group-recovery">
+                <label>
+                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                    Remember me
+                </label> |
+                <label><a href="">Password forgotten</a></label>
+            </div>
+            <div class="form-group m-form-valid">
+                <button type="submit" id="_submit" name="_submit" class="form-control btn btn-default">Sign In</button>
+            </div>
+
+            <div class="form-group m-other-option">
+                <fieldset>
+                    <legend>Or</legend>
+                    <a href="">Connect with Fb</a>
+                </fieldset>
+            </div>
+
+        </form>
+
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

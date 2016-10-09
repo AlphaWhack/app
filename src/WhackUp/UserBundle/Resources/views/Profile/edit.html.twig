@@ -1,0 +1,53 @@
+{# src/WhackUp/UserBundle/Resources/views/Profile/edit.html.twig #}
+
+{% extends "WhackUpUserBundle:Profile:index.html.twig" %}
+
+{#{% block title %}{{ parent() }}  {{ app.user.username }}{% endblock %} #}
+
+
+{% block block_onglet_edit %}active{% endblock %}
+
+{% block block_profil %}
+    {% if is_granted('ROLE_ADMIN') %}
+        {{ form_start(form, { 'action': path('admin_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+    {% else %}
+        {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+    {% endif %}
+
+        <div class="info-form">
+            {{ form_errors(form.username) }}
+            {{ form_errors(form.email) }}
+            {{ form_errors(form.current_password) }}
+        </div>
+        <div class="form-group ">
+            <div class="input-group">
+                Login : <br/>
+                {{ form_widget(form.username, {'attr': {'class': 'form-control','placeholder':'Login'}}) }}
+            </div>
+        </div>
+        <div class="form-group ">
+            <div class="input-group">
+                Adressse email :<br/>
+                {{ form_widget(form.email, {'attr': {'class': 'form-control','placeholder':'Mail'}}) }}
+            </div>
+        </div>
+        <div class="form-group ">
+            <div class="input-group">
+                Mot de passe actuel :<br/>
+                {{ form_widget(form.current_password, {'attr': {'class': 'form-control','placeholder':'Current Password'}}) }}
+            </div>
+        </div>
+        <div class="form-group m-maj" >
+            <input type="submit" class="form-control btn btn-default" value="{{ 'Valider'|trans }}" />
+        </div>
+    {{ form_end(form) }}
+{% endblock %}
+
+
+
+
+
+
+
+
+
