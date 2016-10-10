@@ -1,0 +1,134 @@
+
+body{
+    margin:0;
+    font-family: FuturaPT-Medium,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    background-color:#121314;
+    color:#ffffff;
+}
+
+#container-tools-menu{
+    border-bottom:2px solid #ffa500;
+    height:50px;
+    width:100%;
+    background-color:#000000;
+    position:fixed;
+    z-index: 500;
+}
+.wrap-tools-menu{
+    border:0px solid #ed331c;
+    width:1100px;
+    height:50px;
+    margin:0 auto;
+    position:relative;
+}
+.wrap-logo{
+    border:0px solid #fff;
+    width:70px;
+    height:50px;
+    position:relative;
+    float:left;
+}
+.wrap-logo a > img{
+    width:100%;
+    height:100%;
+}
+
+.wrap-infos-user{
+    border:0px solid darkolivegreen;
+    width: 245px;
+    position: relative;
+    float:right;
+    height:50px;
+}
+.wrap-infos-user > div{
+    border:0px solid gray;
+    height:40px;
+    top:4px;
+    position:relative;
+    float:right;
+}
+.wrap-infos-user .min-profil-picture{
+    width:40px;
+    border-radius: 100%;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border:1px solid #ffa500;
+    overflow: hidden;
+}
+.wrap-infos-user .min-profil-picture img{
+    width:100%;
+    height:100%;
+}
+.wrap-infos-user .min-profil-name{
+    max-width:140px;
+    padding-left:10px;
+    font-size: 14px;
+    line-height: 38px;
+    cursor:pointer;
+}
+.other-link-infos{
+    border-bottom:2px solid #ffa500;
+    border-top: 0px;
+    width:200px;
+    max-height:100px;
+    position:absolute;
+    right: 0px;
+    top: 47px;
+    background-color:#000000;
+    padding:5px;
+    display:none;
+}
+.other-link-infos ul{
+    list-style: none;
+    padding-left:20px;
+    margin-bottom: 0px;
+}
+.other-link-infos ul li{}
+.other-link-infos ul li a{
+    color:#ffa500;
+    font-size:16px;
+}
+.wrap-infos-user .min-profil-notif{
+    max-width:60px;
+    font-size:20px;
+    padding-top:8px;
+    border:0px solid red;
+    margin-left: 10px;
+}
+.wrap-infos-user .min-profil-notif span{
+    cursor:pointer;
+}
+.wrap-infos-user .min-profil-notif sup{
+    font-size:12px;
+    top:-50%;
+    color:#ffa500;
+
+}
+
+
+#container-main{
+    border:0px solid #fff;
+    height:auto;
+    width:100%;
+    position:relative;
+}
+
+#main{
+    border:0px solid #ed331c;
+    width:1100px;
+    height:auto;
+    margin:0 auto;
+    position:relative;
+    top:60px;
+}
+
+
+
+
+
+
+
+
+
+
+

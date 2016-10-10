@@ -1,0 +1,401 @@
+/* *
+  header
+* */
+.wrap-lecteur{
+  border:0px solid blue;
+    width: 300px;
+    position: relative;
+    float:left;
+    height:50px;
+}
+.wrap-item-menu{
+    border:0px solid coral;
+    width: 450px;
+    position: relative;
+    float:left;
+    height:50px;
+}
+.wrap-item-menu div.item{
+    position:relative;
+    float:left;
+    font-size: 18px;
+    border:0px solid white;
+    top:13px;
+}
+.wrap-item-menu div.item:first-child,
+.wrap-item-menu div.item:nth-child(1),
+.wrap-item-menu div.item:nth-child(2),
+.wrap-item-menu div.item:nth-child(3){
+    width:30%;
+    text-align: center;
+}
+.wrap-item-menu div.item:last-child{
+    width:30px;
+    height:30px;
+    border:0px solid white;
+}
+
+.wrap-item-menu a{
+    text-decoration: none;
+    color:white;
+}
+.wrap-item-menu a:hover,
+.wrap-item-menu div.item:last-child span.glyphicon.glyphicon-search:hover{
+    color:#ffa500;
+}
+
+.wrap-item-menu div.item.wrap-icon-search > span{
+    cursor:pointer;
+}
+.container-search{
+    border-bottom: 2px solid #ffa500;
+    background-color:#000;
+    height: auto;
+    width: 1100px;
+    float: right;
+    position: absolute;
+    right: -295px;
+    top: 37px;
+    padding-bottom: 5px;
+    display:none;
+}
+.wrap-top-search{
+    border:0px solid darkred;
+    position:relative;
+    float:left;
+    width:99%;
+    margin:5px;
+    height:auto;
+    padding-bottom:5px;
+}
+
+.wrap-top-search .form-search{
+    width:100%;
+    border:0px solid #ffa500;
+    height:auto;
+    position:relative;
+    float:left;
+    margin-top:3px;
+    text-align:center;
+}
+.wrap-top-search .form-search > form{
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+.wrap-top-search .form-search input[type="text"]{
+    border: 1px solid #ffa500;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    padding: 2px 10px 2px 10px;
+    width: 35%;
+    color:white;
+    background: transparent;
+}
+.wrap-top-search .form-search input[type="submit"]{
+    border: 1px solid #ffa500;
+    background: #ffa500;
+    border-radius: 5px;
+    color: #000;
+}
+.wrap-bottom-search{
+    border:0px solid white;
+    position:relative;
+    float:left;
+    width:100%;
+    height:auto;
+    margin-top:10px;
+}
+.wrap-bottom-search .title-search{
+    width: 96%;
+    margin-left: 2%;
+    border-bottom:1px solid #ffa500;
+    height:20px;
+    position:relative;
+    float:left;
+    padding-right:15px;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.wrap-bottom-search .title-search .green{color:#ffa500; font-weight: bold;}
+.wrap-bottom-search .result-search{
+    border:0px solid red;
+    width:100%;
+    height:auto;
+    position:relative;
+    float:left;
+    margin-top:8px;
+}
+
+
+/* *
+  slider
+* */
+.container-slider{
+    border:1px solid #fff;
+    width:100%;
+    height:200px;
+    position:relative;
+    float:left;
+}
+
+/* *
+  body
+* */
+.container-body{
+    border:0px solid #fff;
+    width:100%;
+    height:auto;
+    position:relative;
+    float:left;
+    margin-top:20px;
+}
+
+.container-body .title-body{
+    position:relative;
+    border-bottom:2px solid #ffa500;
+    float:left;
+    width:100%;
+    height:40px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.container-body .title-body > .row { margin:0;}
+
+.container-body .title-body .row > div{
+    font-size:18px;
+    font-weight:bold;
+    line-height: 40px;
+    border:0px solid red;
+}
+.container-body .title-body .row > div.m-border-arr{
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;;
+}
+.container-body .title-body .row > div.m-border-arr.active{
+    border-top:2px solid #ffa500;
+}
+.container-body .title-body .row > div.m-border-arr:hover{
+    border-top:2px solid #e0f2be;
+    cursor:pointer;
+}
+
+.container-body .body{  /*here */
+    position:relative;
+    border:0px solid #fff;
+    float:left;
+    width:100%;
+    height:auto; /*800px*/
+}
+
+.containt-body{
+    position:relative;
+    width:100%;
+    height:auto;
+}
+
+.wrap-disco{
+   border:0px solid gray;
+    position:relative;
+    float:left;
+    width: 250px;
+    height: 295px;
+    margin-left: 20px;
+    margin-bottom: 15px;
+
+    -moz-box-shadow: 0px 1px 2px 0px  #656565;
+    -webkit-box-shadow: 0px 1px 2px 0px #656565;
+    -o-box-shadow: 0px 1px 2px 0px #656565;
+    box-shadow: 0px 1px 2px 0px #656565;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#ffa500, Direction=180, Strength=2);
+}
+
+.wrap-disco .mood-user{
+    position:absolute;
+    float:left;
+    left:0px;
+    width:30px;
+    height:30px;
+    border:1px solid #ffa500;
+    z-index: 100;
+    border:1px solid #ffa500;
+    background: no-repeat orange url(../img/star.png) 0px 0px;
+    background-size: 27px;
+    opacity: 0.1;
+}
+.wrap-disco .mood-user.like{
+    opacity: 0.6;
+}
+.wrap-disco .disco{
+
+}
+.wrap-disco .disco:hover{
+    opacity: 0.4;
+}
+.wrap-disco .disco > div{
+    position:relative;
+    float:left;
+    width:100%;
+}
+.wrap-disco .disco-cover{
+    height:220px;
+    border:0px solid lawngreen;
+}
+.wrap-disco .disco-cover > img, .wrap-disco .disco-cover .wrap-cover-play > img{
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+.wrap-disco .disco-cover .wrap-cover-play{
+    border:0px dotted gray;
+    position:absolute;
+    left: 30%;
+    top: 30%;
+    width: 100px;
+    height: 100px;
+    display:none;
+}
+.wrap-disco .disco:hover .disco-cover .wrap-cover-play{
+    display:block;
+}
+.wrap-disco .disco-info{
+    height:73px;
+    padding-top:5px;
+    background: #0c1013;
+}
+.wrap-disco .disco-info .title{
+    text-align: center;
+    font-size:16px;
+    border:0px solid red;
+    width: 100%;
+    height:20px;
+}
+.wrap-disco .disco-info .description{
+    padding:6px;
+    margin-top:5px;
+    font-size:12px;
+    border:0px solid yellow;
+    width: 100%;
+    height:45px;
+}
+
+
+/***********************************  profile **********************************/
+/****-------------------------------------------------------------------*******/
+.top-profil-user{
+    border-bottom:1px solid #ffa500;
+    width:100%;
+    position:relative;
+    float:left;
+    height:30px;
+}
+.top-profil-user .item-profil:first-child{
+    padding-left:5px;
+}
+.top-profil-user .item-profil{
+    margin-right: 20px;
+    padding-right: 10px;
+    line-height: 30px;
+    font-size: 14px;
+    height: 30px;
+    display: inline-block;
+}
+.top-profil-user .item-profil.active{
+    border-bottom: 3px solid #ffa500;
+}
+.top-profil-user .item-profil.active a{
+    color:#ffa500;
+}
+.top-profil-user .item-profil a{
+    color:#fff;
+    text-decoration:none;
+}
+.body-profil-user{
+    border-bottom:1px solid white;
+    width:100%;
+    position:relative;
+    float:left;
+    height:auto;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-top: 10px;
+    margin-top:10px;
+}
+.body-profil-user .wrap-picture-profil{
+    border: 0px solid;
+    position: relative;
+    float: left;
+    width: 160px;
+    height: 170px;
+    margin-right: 10px;
+}
+.body-profil-user .wrap-picture-profil img{
+    width:100%;
+    max-height:100%;
+}
+.body-profil-user span.typ-compte{
+    color:green;
+    font-weight: bold;
+}
+
+.body-profil-user form.fos_user_profile_edit,
+.body-profil-user form.fos_user_change_password,
+.body-profil-user form.whack_up_user_avatar{
+    border: 0px solid red;
+    width: 400px;
+}
+
+.body-profil-user form.fos_user_profile_edit .info-form,
+.body-profil-user form.fos_user_change_password .info-form,
+.body-profil-user form.whack_up_user_avatar .info-form{
+ color:orange;
+}
+.body-profil-user form.whack_up_user_avatar .info-form{
+    margin-bottom: 10px;
+}
+.body-profil-user form.fos_user_change_password .info-form ul,
+.body-profil-user form.fos_user_profile_edit .info-form ul,
+.body-profil-user form.whack_up_user_avatar .info-form ul{
+    list-style: none;
+    padding-left: 0px;
+}
+.body-profil-user form.fos_user_change_password .m-maj input,
+.body-profil-user form.fos_user_profile_edit .m-maj input,
+.body-profil-user form.whack_up_user_avatar .m-maj input{
+    width: 50%;
+    background: orange;
+    border:1px solid #000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
