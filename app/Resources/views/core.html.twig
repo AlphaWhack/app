@@ -14,21 +14,23 @@
 <body>
 {% block body %}
 
-    <div id="container-tools-menu">
-             <div class="wrap-tools-menu">
-                   <div class="wrap-logo">
-                       <a href="{% block link_logo %} {{ path('whack_up_home') }} {% endblock %}">
-                            <img src="{{asset('bundles/whackup/img/Logo.png') }}" />
-                       </a>
-                   </div>
-                 {% block block_lecteur_dj %}
-                 {% endblock %}
-                 {% block block_menu_user %}
-                 {% endblock %}
-                 {% block block_info_user %}
-                 {% endblock %}
-             </div>
+    {% block block_container_tools_menu %}
+        <div id="container-tools-menu">
+                 <div class="wrap-tools-menu">
+                       <div class="wrap-logo">
+                           <a href="{% block link_logo %} {{ path('whack_up_home') }} {% endblock %}">
+                                <img src="{{asset('bundles/whackup/img/Logo.png') }}" />
+                           </a>
+                       </div>
+                     {% block block_lecteur_dj %}
+                     {% endblock %}
+                     {% block block_menu_user %}
+                     {% endblock %}
+                     {% block block_info_user %}
+                     {% endblock %}
+                 </div>
         </div>
+    {% endblock %}
 
         <div id="container-main">
 
