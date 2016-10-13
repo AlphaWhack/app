@@ -13,8 +13,21 @@
 {% block title %}{{ parent() }} | {{ app.user.username }}{% endblock %}
 
 
+{% block block_container_tools_menu %}
+    {% if is_granted('ROLE_ADMIN') == true %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
 {% block block_main %}
     <div class="top-profil-user">
+        {% if is_granted('ROLE_ADMIN') == false %}
+        <span class="item-logo">
+            <a href="{% block link_logo %} {{ path('whack_up_home') }} {% endblock %}">
+                <img src="{{asset('bundles/whackup/img/Logo.png') }}" />
+            </a>
+        </span>
+        {% endif %}
 
         <span class="item-profil {% block block_onglet_show %}{% endblock %}">
                   <a href="{% if is_granted('ROLE_ADMIN') %} {{ path('admin_profile') }} {% else %} {{ path('fos_user_profile_show') }} {% endif %} ">
@@ -41,6 +54,13 @@
                       <span class="glyphicon glyphicon-cog"></span> Param&egrave;tres
                   </a>
         </span>
+        {% if is_granted('ROLE_ADMIN') == false %}
+        <span class="item-profil item-logout">
+                  <a href="{{ path('fos_user_security_logout') }} ">
+                      <span class="glyphicon glyphicon-off"></span> D&eacute;connexion
+                  </a>
+        </span>
+        {% endif %}
 
     </div>
     <div class="body-profil-user">
