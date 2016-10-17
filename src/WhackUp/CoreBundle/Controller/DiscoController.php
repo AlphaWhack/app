@@ -18,7 +18,31 @@ class DiscoController extends Controller
             return $this->redirectToRoute('fos_user_security_logout');
         }
 
-
         return $this->render('WhackUpCoreBundle:Disco:index.html.twig');
+    }
+
+    public function discoAction(Request $request)
+    {
+        return $this->render('WhackUpCoreBundle:Disco:disco.html.twig');
+    }
+
+    public function favouriteAction(Request $request)
+    {
+        return $this->render('WhackUpCoreBundle:Disco:favourite.html.twig');
+    }
+
+    public function aroundAction(Request $request)
+    {
+        return $this->render('WhackUpCoreBundle:Disco:around.html.twig');
+    }
+
+    public function usAction(Request $request)
+    {
+        return $this->render('WhackUpCoreBundle:Disco:us.html.twig');
+    }
+
+    public function sliderAction(Request $request)
+    {
+        return $this->render('WhackUpCoreBundle:Disco:slider.html.twig');
     }
 }

@@ -1,7 +1,7 @@
 # src/CoreBundle/Ressources/config/routing.yml
 
-
-
 whack_up_home:
     path:  /
     defaults: { _controller: WhackUpCoreBundle:Disco:index }
+
+
