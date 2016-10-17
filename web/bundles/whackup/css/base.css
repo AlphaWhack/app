@@ -206,6 +206,28 @@ header.m-header{
 	margin-top:4px;
 	margin-bottom:4px;
 }
+#main .portfolio .side-left ul{
+
+}
+#main .portfolio .side-left .bx-controls-direction{
+	border: 0px solid blue;
+	position: absolute;
+	top: 84%;
+	width: 100%;
+}
+#main .portfolio .side-left .bx-prev{
+	float:left;
+	margin-left:5px;
+	color:#000;
+}
+#main .portfolio .side-left .bx-next{
+float:right;
+	margin-right:5px;
+	color:#000;
+}
+#main .portfolio .side-left .bx-pager.bx-default-pager{
+	display:none!important;
+}
 #main .portfolio .side-left iframe{
 	width:100%; /*430px*/
 	height:100%; /*296px*/
