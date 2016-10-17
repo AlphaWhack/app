@@ -4,35 +4,21 @@
 
 $(document).ready(function(){
 
-    $('#_submita').click(function(e){
-        e.preventDefault();
-        if($('#form-connexion #username').val() == '' || $('#form-connexion #password').val() == ''){
-           $('.msg-connexion').html("Login or password empty ...");
-            //alert("Login or password empty");
-        }
-        else{
-            $.ajax({
-                type: 'POST',
-                url: $('#form-connexion').attr( 'action' ),
-                data : $('#form-connexion').serialize(), // SOME DATA,
-                success: function(data) {
-                    // DO THE STUFF
-                    $('.msg-connexion').html(data.message);
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    switch (jqXHR.status) {
-                        case 401:
-                            var redirectUrl = Routing.generate('fos_user_security_login');
-                            $('.msg-connexion').html("Status "+ jqXHR.status);
-                            window.location.replace(redirectUrl);
-                            break;
-                        case 403: // (Invalid CSRF token for example)
-                            // Reload page from server
-                            $('.msg-connexion').html("Status "+ jqXHR.status);
-                            window.location.reload(true);
-                    }
-                },
-            });
+     if($('body').hasClass('page-login-register')){
+         $('.base.bxslider').bxSlider({
+             video: true,
+             useCSS: false
+         });
+     }
+    if($('body').hasClass('page-user')){
+        var slider = $('.core-user.bxslider').bxSlider({
+            mode: 'horizontal',  //fade
+            speed: 2000,
+            auto: true,
+            pause: 10000,
+        });
+    }
+
         /*
         $.ajax({
             type        : $('#form-connexion').attr( 'method' ),
@@ -49,9 +35,6 @@ $(document).ready(function(){
         });
 
         */
-        }
-
-    });
 
     $(".min-profil-name").click(function(){
         if($(".pseudo-profil").find(".glyphicon").hasClass("glyphicon-menu-down")){
@@ -93,6 +76,8 @@ $(document).ready(function(){
         }
 
     });
+
+
 
 
 
