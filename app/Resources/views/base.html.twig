@@ -17,7 +17,7 @@
 
     </head>
 
-    <body>
+    <body class="page-login-register">
             <header class="m-header">
                 <div class="wrap-side-header">
                     <div class="header-left">
@@ -39,7 +39,11 @@
                 <div class="portfolio ">
                     <div class="side-left">
                         <div class="side-left-col1">
-                            <iframe src="http://www.youtube.com/embed/VmnIeLmjuHA" frameborder="0" allowfullscreen></iframe>
+                            <ul class="base bxslider ">
+                                <li> {#width="500" height="281"#}
+                                    <iframe src="http://www.youtube.com/embed/VmnIeLmjuHA" width="500" height="345"  frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                                </li>
+                            </ul>
                         </div>
                         <div class="side-left-col2"></div>
                     </div>
@@ -66,6 +70,8 @@
     </body>
 
     <script type="text/javascript" src="{{ asset('bundles/whackup/js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/whackup/js/jquery.bxslider/plugins/jquery.fitvids.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/whackup/js/jquery.bxslider/jquery.bxslider.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/whackup/js/main.js') }}"></script>
     {% block javascripts %}{% endblock %}
 </html>

@@ -3,15 +3,22 @@
 <head>
     <meta charset="UTF-8" />
     <title>{% block title %}WhackUp{% endblock %}</title>
+    {% block baseTag %}{% endblock %}
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <link rel="stylesheet" media="screen" type="text/css" href="{{ asset('bundles/whackup/css/bootstrap/css/bootstrap.min.css') }}"/>
     <link rel="stylesheet" media="screen" type="text/css" href="{{ asset('bundles/whackup/css/core.css') }}" />
     {% block stylesheets %}
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('bundles/whackup/img/whackup.ico') }}" />
+    <script type="text/javascript" src="{{asset('bundles/whackup/js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/whackup/js/jquery.bxslider/plugins/jquery.fitvids.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/whackup/js/jquery.bxslider/jquery.bxslider.js') }}"></script>
+    <script type="text/javascript" src="{{asset('bundles/whackup/css/bootstrap/js/bootstrap.min.js') }}"></script>
+    {# <script type="text/javascript" src="{{asset('bundles/whackup/js/angular.min.js') }}"></script>
+     <script type="text/javascript" src="{{asset('bundles/whackup/js/angular-ui-router.min.js') }}"></script> #}
 </head>
 
-<body>
+<body class="{% block page %} {% endblock %}">
 {% block body %}
 
     {% block block_container_tools_menu %}
@@ -34,15 +41,16 @@
 
         <div id="container-main">
 
-            <div id="main">
+            <div id="main" class="tab-content">
                 {% block block_main %}
+
                 {% endblock %}
             </div>
 
         </div>
 
 {% endblock %}
-    <script type="text/javascript" src="{{asset('bundles/whackup/js/jquery.js') }}"></script>
+
 {% block javascripts %}
     <script type="text/javascript" src="{{asset('bundles/whackup/js/main.js') }}"></script>
 {% endblock %}
