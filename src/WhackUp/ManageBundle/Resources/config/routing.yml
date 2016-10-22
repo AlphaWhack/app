@@ -2,7 +2,11 @@
 
 whack_up_manage_homepage:
     path:     /
-    defaults: { _controller: WhackUpManageBundle:Default:index }
+    defaults: { _controller: WhackUpManageBundle:Disco:index }
+
+whack_up_manage_add_disco:
+    path:     /adddisco
+    defaults: { _controller: WhackUpManageBundle:Disco:adddisco }
 
 
 admin_login:

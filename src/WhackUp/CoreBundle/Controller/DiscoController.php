@@ -21,9 +21,24 @@ class DiscoController extends Controller
         return $this->render('WhackUpCoreBundle:Disco:index.html.twig');
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     * show list of night club
+     */
     public function discoAction(Request $request)
     {
-        return $this->render('WhackUpCoreBundle:Disco:disco.html.twig');
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('WhackUpManageBundle:Disco')
+        ;
+        $listDisco = $repository->findAll();
+
+        return $this->render('WhackUpCoreBundle:Disco:disco.html.twig',
+            array(
+                'discos' => $listDisco,
+            ));
     }
 
     public function favouriteAction(Request $request)
