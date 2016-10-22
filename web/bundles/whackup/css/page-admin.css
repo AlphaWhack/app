@@ -16,12 +16,7 @@
     border:0px solid white;
     top:13px;
 }
-/*
-.wrap-item-menu-admin div.item:first-child,
-.wrap-item-menu-admin div.item:nth-child(1),
-.wrap-item-menu-admin div.item:nth-child(2),
-.wrap-item-menu-admin div.item:nth-child(3){
-*/
+
 .wrap-item-menu-admin div.item{
     width:20%;
     text-align: center;
@@ -36,9 +31,171 @@
 }
 
 
+.side-left{
+    position:relative;
+    float:left;
+    width:280px;
+    height:auto;
+    border:0px solid #ffa500;
+}
+.wrap-block{
+    position:relative;
+    flaoat:left;
+    width:100%;
+    height:auto;
+    border:1px solid #ffa500;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+}
+.wrap-block .title{
+    position:relative;
+    flaoat:left;
+    width:100%;
+    height:30px;
+    background: #ffa500;
+    /*opacity: 0.7;*/
+    border-bottom:1px solid #ffa500;
+    color:#000;
+    line-height: 28px;
+    padding-left:10px;
+    border-radius: 6px 6px 0px 0px;
+    -webkit-border-radius: 6px 6px 0px 0px;
+    -moz-border-radius: 6px 6px 0px 0px;
+    font-weight: bold;
+}
+.wrap-block .content{
+    position:relative;
+    flaoat:left;
+    width:100%;
+    height:auto;
+    border:0px solid #ffa500;
+    padding:10px;
+}
+.wrap-block .content ul{
+    list-style: none;
+    padding-left: 20px;
+}
+.wrap-block .content ul li{
+    margin-bottom: 10px;
+}
+.wrap-block .content ul li a{
+    color:#fff;
+    text-decoration: none;
+}
 
+.side-right{
+    position:relative;
+    float:left;
+    width:810px;
+    height:auto;
+    margin-left:10px;
+    border:0px solid #ffa500;
+}
 
+.side-right .title{
+    position:relative;
+    flaoat:left;
+    width:100%;
+    height:30px;
+    border-bottom:1px solid #ffa500;
+    line-height: 28px;
+    text-align: right;
+    margin-bottom: 10px;
+}
+.side-right .content{
+    position:relative;
+    float:left;
+    width:100%;
+    height:auto;
+    border-bottom:0px solid #ffa500;
 
+}
+
+.side-right form.disco{
+    border:0px solid azure;
+}
+.side-right form.disco .info-form{
+    text-align:center;
+    color:#ffa500;
+    margin-bottom: 10px;
+}
+.side-right form.disco .info-form ul{
+    list-style: none;
+}
+.side-right form.disco .form-group{
+    width:100%;
+    position:relative;
+    float:left;
+}
+.side-right form.disco .input-groupa{
+
+}
+.side-right form.disco .input-groupa .form-control{
+    width:60%;
+    position:relative;
+    float:left;
+}
+.side-right form.disco .form-group.m-form-register{
+    text-align: center;
+}
+.side-right form.disco .m-form-register button.btn{
+    position: relative;
+     margin:auto 0px;
+    width:30%;
+}
+.side-right form.disco .m-label{
+    position:relative;
+    float:left;
+    border:0px solid teal;
+    width:25%;
+    font-size:14px;
+    line-height: 30px;
+    height:30px;
+    text-align: right;
+    padding-right:10px;
+}
+
+.side-right .tab-list-disco{
+    margin-bottom: 10px;
+}
+.side-right .tab-list-disco thead{
+    background: #ffa500;
+    color:#000;
+    font-weight: bold;
+}
+.side-right .tab-list-disco thead tr{
+    height: 30px;
+}
+.side-right .tab-list-disco thead td{
+    border:1px solid #ffa500;
+}
+.side-right .tab-list-disco tr.item{
+
+}
+.side-right .tab-list-disco tr.item:hover{
+    opacity: 0.7;
+}
+.side-right .tab-list-disco tr.item td{
+   padding:5px 0px;
+}
+.side-right .tab-list-disco td{
+    border:1px solid #ffa500;
+    text-align: center;
+}
+.side-right .tab-list-disco td.nom{
+    width:200px;
+}
+.side-right .tab-list-disco td.addr{
+    width:180px;
+}
+.side-right .tab-list-disco td.web{}
+.side-right .tab-list-disco td.option{
+    width: 30px;
+    text-align: center;
+}
+.side-right .tab-list-disco td.web a,
+.side-right .tab-list-disco td.option a{color:#fff;}
 
 
 
