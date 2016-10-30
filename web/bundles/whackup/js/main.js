@@ -77,8 +77,38 @@ $(document).ready(function(){
 
     });
 
+    //active
+    $(".container-body .title-body .col-md-4.m-border-arr").each(function(){
+        $(this).click(function(){
+            $(".container-body .title-body .col-md-4.m-border-arr").removeClass("active");
+            $(this).addClass("active");
+        });
+    });
 
+    // zik
+    $(".wrap-disco .disco-cover .wrap-cover-play").each(function(){
+        $(this).click(function(){
+            data = $(this).attr('data');
+            disco = $(this).parents('.disco').find('.disco-info .title').text();
+            var currentPlayer = new MediaElementPlayer('#player',{
+                audioWidth: 250,
+                enableAutosize: true,
+                features: ['playpause','progress','current','volume','fullscreen']
+            });
+            //currentPlayer.pause();
+            currentPlayer.setSrc(data);
+            currentPlayer.play();
+            $('.wrap-lecteur .info-lecture marquee').html(disco);
+        });
+    });
 
+    /*
+    var player = new MediaElementPlayer('#player',{
+        audioWidth: 250,
+        enableAutosize: true,
+        features: ['playpause','progress','current','volume','fullscreen']
+    });
+    */
 
 
 
