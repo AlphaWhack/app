@@ -153,7 +153,8 @@ header.m-header{
 
 #main{
 	position:relative;
-	margin:0px auto;
+	left:0px;
+	/*margin:0px auto; */
 	width:968px;
 	height:auto;
 	border:0px solid orange;
