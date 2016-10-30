@@ -28,4 +28,35 @@ class DiscoRepository extends \Doctrine\ORM\EntityRepository
 
         return $result;
     }
+
+    /**
+     * @return mixed
+     * get by name
+     */
+    public function findByNameDisco($key)
+    {
+        $qb = $this
+            ->createQueryBuilder('d')
+            ->where('d.nom LIKE :nom')
+            ->setParameter('nom','%'.$key.'%')
+        ;
+
+        $result = $qb->getQuery()->getResult();  //
+
+        return $result;
+    }
+
+    public function nbreByNameDisco($key)
+    {
+        $qb = $this
+            ->createQueryBuilder('d')
+            ->select('COUNT(d)')
+            ->where('d.nom like :nom')
+            ->setParameter('nom','%'.$key.'%')
+        ;
+
+        $result = $qb->getQuery()->getSingleScalarResult();
+
+        return $result;
+    }
 }

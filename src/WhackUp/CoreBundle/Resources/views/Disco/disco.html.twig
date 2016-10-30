@@ -6,18 +6,22 @@
 {% else %}
     {% for disco in discos %}
         <div class="wrap-disco">
-            <div class="mood-user "></div> {# {% if i == 2 or i == 5 %} like {% endif %} #}
+            <div class="mood-user {% if app.user.discos is not empty %}
+                                        {% for favoris in app.user.discos %}
+                                            {% if favoris.id == disco.id %} like {% endif %}
+                                        {% endfor %}
+                                    {% endif %}" id="{{ disco.id }}"></div>
             <div class="disco">
                 <div class="disco-cover">
                     <img src="{{asset('bundles/whackup/file/disco/Tof-6.jpg') }}" />
-                    <div class="wrap-cover-play">
+                    <div class="wrap-cover-play" data="{{ disco.connexion }}">
                         <img src="{{asset('bundles/whackup/img/play.png') }}" />
                     </div>
                 </div>
                 <div class="disco-info">
                     <div class="title"> {{ disco.nom }}</div>
                     <div class="description">{{ disco.description | truncate(80, false, '...')}}</div>
-                </div>  {#{{ disco.adresse }} {{ disco.web }}#}
+                </div>  {#{{ disco.adresse }} #}
             </div>
         </div>
     {% endfor %}

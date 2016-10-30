@@ -4,4 +4,25 @@ whack_up_home:
     path:  /
     defaults: { _controller: WhackUpCoreBundle:Disco:index }
 
+whack_up_add_favoris:
+    path:  /addfavourite
+    defaults: { _controller: WhackUpCoreBundle:Disco:addfavourite }
+    requirements:
+        methods: POST
+
+whack_up_remove_favoris:
+    path:  /removefavourite
+    defaults: { _controller: WhackUpCoreBundle:Disco:removefavourite }
+    requirements:
+        methods: POST
+
+whack_up_favoris:
+    path:  /favourite
+    defaults: { _controller: WhackUpCoreBundle:Disco:favourite }
+
+whack_up_recherche:
+    path:  /recherche
+    defaults: { _controller: WhackUpCoreBundle:Disco:recherche }
+
+
 

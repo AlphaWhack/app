@@ -12,4 +12,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
+    /*
+    public function nbreDisco()
+    {
+        $qb = $this
+            ->createQueryBuilder('d')  //SELECT COUNT(d) FROM WhackUpManageBundle:Disco
+            ->select('COUNT(d)');
+        ;
+
+        $result = $qb->getQuery()->getSingleScalarResult();
+
+        return $result;
+    }
+    */
 }

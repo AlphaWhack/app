@@ -7,6 +7,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use FOS\UserBundle\Model\User as BaseUser;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use WhackUp\ManageBundle\Entity\Disco;
+
 /**
  * User
  *
@@ -30,6 +33,44 @@ class User extends BaseUser
      */
 
     protected $image;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="WhackUp\ManageBundle\Entity\Disco", cascade={"persist"})
+     */
+    private $discos;
+
+    public function __construct(){
+        $this->discos = new ArrayCollection();
+    }
+
+    /**
+     * @return ArrayCollection
+     * get list of favoris (disco)
+     */
+    public function getDiscos()
+    {
+        return $this->discos;
+    }
+
+    /**
+     * @param Disco $disco
+     * @return $this
+     * add disco like favoris
+     */
+    public function addDisco(Disco $disco)
+    {
+        $this->discos[] = $disco;
+        return $this;
+    }
+
+    /**
+     * @param Disco $disco
+     * remove disco like favoris
+     */
+    public function removeDisco(Disco $disco)
+    {
+       $this->discos->removeElement($disco);
+    }
 
     public function setImage(Image $image = null)
     {

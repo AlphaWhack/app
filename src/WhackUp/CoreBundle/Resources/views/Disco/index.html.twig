@@ -5,6 +5,7 @@
 {% block title %}Bienvenue sur votre espace personnel{% endblock %}
 
 {% block stylesheets %}
+    <link rel="stylesheet" media="screen" type="text/css" href="{{asset('bundles/whackup/css/mediaelementplayer.css') }}" />
     <link rel="stylesheet" media="screen" type="text/css" href="{{asset('bundles/whackup/css/page.css') }}" />
     <link rel="stylesheet" media="screen" type="text/css" href="{{asset('bundles/whackup/css/page-tablette.css') }}" />
 {% endblock %}
@@ -17,7 +18,14 @@
 
 {% block block_lecteur_dj %}
     <div class="wrap-lecteur">
-      {#  <iframe src="https://static.infomaniak.ch/infomaniak/radio/html/whackupstation_player.html" height="100" width="468" scrolling="no" frameborder="0" allowtransparency="true"></iframe> #}
+      {#
+        <iframe src="https://static.infomaniak.ch/infomaniak/radio/html/whackupstation_player.html" height="100" width="468" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+        http://whackupstation.ice.infomaniak.ch/whackupstation-128.mp3
+        #}
+        <audio id="player" src="http://37.59.28.208:8236/stream" type="audio/mp3" controls="controls"> </audio>
+        <div class="info-lecture">
+            <marquee scrolldelay="150">click on one night club ....</marquee>
+        </div>
     </div>
 {% endblock %}
 
@@ -33,35 +41,14 @@
                             <div class="container-search">
                                 <div class="wrap-top-search">
                                      <div class="form-search">
-                                          <form action="" >
-                                               <input type="text" placeholder="Discothèque" value="Ipsum" />
-                                               <input type="submit" value="Go" />
-                                          </form>
+                                          <div class="form">
+                                              <input type="text" placeholder="Chercher une discotheque" id="key-disco" />
+                                              <input type="submit" value="Go" id="go" />
+                                          </div>
                                      </div>
                                 </div>
                                 <div class="wrap-bottom-search">
-                                    <div class="title-search">5 R&eacute;sultats pour <span class="green"> Ipsum </span></div>
-                                    <div class="result-search">
-                                        <!----------------- exemple dynamique de liste de disco  ---------------->
-
-                                            <div class="wrap-disco">
-                                                <div class="mood-user <?php if ($i == 2 or $i == 5) echo "like"; ?>"></div>
-                                                <div class="disco">
-                                                    <div class="disco-cover">
-                                                        <img src="{{asset('bundles/whackup/file/disco/Tof-6.jpg') }}" />
-                                                        <div class="wrap-cover-play">
-                                                            <img src="{{asset('bundles/whackup/img/play.png') }}" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="disco-info">
-                                                        <div class="title"> Lorem Ipsum</div>
-                                                        <div class="description">Quo cognito Constantius ultra mortalem modum...</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        <!----------------- fin exemple dynamique de liste de disco  ---------------->
-                                    </div>
+                                    {# discos found ..#}
                                 </div>
                             </div>
                         </div>
@@ -70,7 +57,7 @@
 
 {% block block_info_user %}
     <div class="wrap-infos-user">
-        <div class="min-profil-notif"> <span class="glyphicon glyphicon-envelope"></span><sup>25</sup></div>
+      {#  <div class="min-profil-notif"> <span class="glyphicon glyphicon-envelope"></span><sup>25</sup></div> #}
         <div class="min-profil-name">
             <div class="pseudo-profil">
                 {{ app.user.username }} <span class="glyphicon glyphicon-menu-down"></span>
@@ -131,6 +118,148 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script src="{{asset('bundles/whackup/js/mediaelement-and-player.min.js') }}"></script>
+
+    <script type="text/javascript">
+        $(".wrap-disco .mood-user").each(function(){
+            $(this).click(function(){
+                add_remove_favoris(this);
+            });
+        });
+
+        function add_remove_favoris(element){
+            idItem = $(element).attr("id");
+            if($(element).hasClass("like")){
+                // remove like favoris
+                remove_favoris(idItem);
+            }
+            else{
+                // add like favoris
+                add_favoris(idItem);
+            }
+        }
+
+        function add_favoris(item) {
+            $.ajax({
+                type: 'POST',
+                url: '{{ path('whack_up_add_favoris') }}',
+                data: { 'id' : item},
+                dataType: 'json',
+                success: function(response) {
+                    $("#"+item).addClass(response.data);
+                    //console.log(response);
+                    setInterval(refresh_favoris(), 0);
+                }
+            });
+        }
+
+        function remove_favoris(item) {
+            $.ajax({
+                type: 'POST',
+                url: '{{ path('whack_up_remove_favoris') }}',
+                data: { 'id' : item},
+                dataType: 'json',
+                success: function(response) {
+                    $("#"+item).removeClass('like');
+                    //console.log(response);
+                    setInterval(refresh_favoris(), 0);
+                }
+            });
+        }
+        function refresh_favoris() {
+            $.ajax({
+                url: '{{ path('whack_up_favoris') }}',
+                success:
+                        function(retour){
+                            $('#favourite').html(retour);
+                            $(".wrap-disco.favourite").each(function(){
+                                $(this).find(".mood-user").click(function(){
+                                    add_remove_favoris(this);
+                                });
+                                $(this).find(".wrap-cover-play").click(function(){
+                                    data = $(this).attr('data');
+                                    var currentPlayer = new MediaElementPlayer('#player',{
+                                        audioWidth: 250,
+                                        enableAutosize: true,
+                                        features: ['playpause','progress','current','volume','fullscreen'],
+                                        success: function (mediaElement, domObject) {
+                                            console.log('good');
+                                        },
+                                        error : function(mediaElement) {
+                                            console.log('medialement problem is detected: %o', mediaElement);
+                                        }
+                                    });
+                                    //currentPlayer.pause();
+                                    currentPlayer.setSrc(data);
+                                    currentPlayer.play();
+                                });
+                            });
+                        }
+            });
+
+        }
+
+        var initPlayer = new MediaElementPlayer('#player',{
+            audioWidth: 250,
+            enableAutosize: true,
+            features: ['playpause','progress','current','volume','fullscreen']
+        });
+
+        $(".wrap-top-search #key-disco").keyup( function () {
+            keyX = $.trim($(this).val());
+            if(keyX != ''){
+                _search_disco(keyX);
+            }
+            else{
+                $(this).val("");
+                _search_disco('');
+            }
+        });
+
+        $(".wrap-top-search #go").click( function () {
+            keyX = $.trim($(".wrap-top-search #key-disc").val());
+            if(keyX != ''){
+                _search_disco(keyX);
+            }
+        });
+
+        function _search_disco(key) {
+            $.ajax({
+                type: 'POST',
+                url: '{{ path('whack_up_recherche') }}',
+                data: { 'key' : key},
+                success: function(data) {
+                    $(".wrap-bottom-search").html(data);
+                    //console.log(response);
+                    $(".wrap-bottom-search .result-search .wrap-disco").each(function(){
+                        $(this).find(".mood-user").click(function(){
+                            add_remove_favoris(this);
+                        });
+                        $(this).find(".wrap-cover-play").click(function(){
+                            data = $(this).attr('data');
+                            var currentPlayer = new MediaElementPlayer('#player',{
+                                audioWidth: 250,
+                                enableAutosize: true,
+                                features: ['playpause','progress','current','volume','fullscreen'],
+                                success: function (mediaElement, domObject) {
+                                    console.log('good');
+                                },
+                                error : function(mediaElement) {
+                                    console.log('medialement problem is detected: %o', mediaElement);
+                                }
+                            });
+                            //currentPlayer.pause();
+                            currentPlayer.setSrc(data);
+                            currentPlayer.play();
+                        });
+                    });
+                    //---
+                }
+            });
+        }
+
+    </script>
+
 {% endblock %}
 
 

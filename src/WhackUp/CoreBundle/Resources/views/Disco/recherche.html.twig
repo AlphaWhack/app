@@ -1,0 +1,60 @@
+{# src/WhackUp/CoreBundle/Resources/views/Disco/recherche.html.twig #}
+
+{#discos#}
+<div class="title-search">
+    {{ nbrediscos }} R&eacute;sultat
+    {% if nbrediscos > 1 %} s {% endif %}
+    pour
+    <span class="green">
+        "{{ key }}"
+    </span>
+</div>
+<div class="result-search">
+{#----------------- exemple dynamique de liste de disco  ---------------- #}
+
+    {% if discos is empty %}
+       <div class="nothing-display"> <span class="glyphicon glyphicon-thumbs-down"></span> Aucune discotheque trouvee ...</div>
+    {% else %}
+        {% for disco in discos %}
+            <div class="wrap-disco">
+                <div class="mood-user {% if app.user.discos is not empty %}
+                                        {% for favoris in app.user.discos %}
+                                            {% if favoris.id == disco.id %} like {% endif %}
+                                        {% endfor %}
+                                    {% endif %}" id="{{ disco.id }}"></div>
+                <div class="disco">
+                    <div class="disco-cover">
+                        <img src="{{asset('bundles/whackup/file/disco/Tof-6.jpg') }}" />
+                        <div class="wrap-cover-play" data="{{ disco.connexion }}">
+                            <img src="{{asset('bundles/whackup/img/play.png') }}" />
+                        </div>
+                    </div>
+                    <div class="disco-info">
+                        <div class="title"> {{ disco.nom }}</div>
+                        <div class="description">{{ disco.description | truncate(80, false, '...')}}</div>
+                    </div>  {#{{ disco.adresse }} #}
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+{#----------------- fin exemple dynamique de liste de disco  ----------------#}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

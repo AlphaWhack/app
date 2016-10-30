@@ -28,7 +28,6 @@ class DiscoController extends Controller
         $listDisco = $repository->findAll();
 
         $nbreDiscos = $repository ->nbreDisco();
-                    ;
 
         return $this->render('WhackUpManageBundle:Disco:index.html.twig',
             array(

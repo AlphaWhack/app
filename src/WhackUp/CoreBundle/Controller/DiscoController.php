@@ -4,7 +4,10 @@ namespace WhackUp\CoreBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\SecurityContext;
+use WhackUp\ManageBundle\Entity\Disco;
 
 class DiscoController extends Controller
 {
@@ -41,9 +44,97 @@ class DiscoController extends Controller
             ));
     }
 
+    /**
+     * @param Request $request
+     * @return JsonResponse|Response
+     */
+    public function addFavouriteAction(Request $request){
+        if ($request->isXMLHttpRequest()) {
+            $id = $request->get('id');
+            $disco = "";
+            if ($id!= ' ') {
+                $em = $this->getDoctrine()->getManager();
+                $disco = $em->getRepository('WhackUpManageBundle:Disco')
+                    ->findOneBy(array('id' => $id));
+
+                $user = $this->getUser();
+                $user->addDisco($disco);
+
+                $em->persist($user);
+                $em->flush();
+            }
+
+            return new JsonResponse(array('data' => 'like'));
+        }
+        return $this->render('WhackUpCoreBundle:Disco:index.html.twig');
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse|Response
+     */
+    public function removeFavouriteAction(Request $request){
+        if ($request->isXMLHttpRequest()) {
+            $id = $request->get('id');
+            $disco = "";
+            if ($id!= ' ') {
+                $em = $this->getDoctrine()->getManager();
+                $disco = $em->getRepository('WhackUpManageBundle:Disco')
+                    ->findOneBy(array('id' => $id));
+
+                $user = $this->getUser();
+                $user->removeDisco($disco);
+
+                $em->persist($user);
+                $em->flush();
+            }
+
+            return new JsonResponse(array('data' => ''));
+        }
+        return $this->render('WhackUpCoreBundle:Disco:index.html.twig');
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse|Response
+     */
+    public function rechercheAction(Request $request){
+        if ($request->isXMLHttpRequest()) {
+            $word = trim($request->get('key'));
+            $result = 0;
+            $discos = '';
+            if ($word != '') {
+                $em = $this->getDoctrine()->getManager();
+                $repository = $em->getRepository('WhackUpManageBundle:Disco');
+                //$discos = $repository->findByNom($word);
+                $discos = $repository->findByNameDisco($word);
+                $result = $repository->nbreByNameDisco($word);
+            }
+
+            return $this->render('WhackUpCoreBundle:Disco:recherche.html.twig',array(
+                    'key' => $word,
+                    'nbrediscos' => $result,
+                    'discos' => $discos,
+                ));
+        }
+        return $this->render('WhackUpCoreBundle:Disco:index.html.twig');
+    }
+
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
     public function favouriteAction(Request $request)
     {
-        return $this->render('WhackUpCoreBundle:Disco:favourite.html.twig');
+        $user = $this->getUser();
+
+        $discos = $user->getDiscos();
+
+        return $this->render('WhackUpCoreBundle:Disco:favourite.html.twig',
+            array(
+                'favoris' => $discos,
+            ));
     }
 
     public function aroundAction(Request $request)
