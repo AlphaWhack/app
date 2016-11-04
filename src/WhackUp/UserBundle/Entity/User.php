@@ -40,6 +40,7 @@ class User extends BaseUser
     private $discos;
 
     public function __construct(){
+        parent::__construct();
         $this->discos = new ArrayCollection();
     }
 
