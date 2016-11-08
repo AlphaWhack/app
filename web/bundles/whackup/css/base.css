@@ -3,6 +3,8 @@
 	src: url("./font/lato/Lato-Regular.ttf");
 }
 
+
+
 body{
     display: -webkit-flex;
 	display: flex;

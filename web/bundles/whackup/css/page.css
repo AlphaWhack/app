@@ -52,10 +52,12 @@
     text-decoration: none;
     color:white;
 }
+.wrap-item-menu div.item.active a,
 .wrap-item-menu a:hover,
 .wrap-item-menu div.item:last-child span.glyphicon.glyphicon-search:hover{
     color:#ffa500;
 }
+
 
 .wrap-item-menu div.item.wrap-icon-search > span{
     cursor:pointer;
@@ -153,7 +155,8 @@
 .container-slider{
     border:0px solid #fff;
     width:100%;
-    height:200px;
+    height: auto;
+    max-height:200px;
     position:relative;
     float:left;
     overflow-y: hidden;
@@ -177,9 +180,14 @@
     border:0px solid blue;
     width:390px;
     right:5%;
-    padding-top:15px;
+    padding-top:5px;
     text-align: right;
 }
+.container-slider .description .deadline-event{
+   font-size:12px;
+    margin-right:10px;
+}
+.container-slider .description a{color:#ffa500;font-size:12px;font-style: italic;}
 
 .container-slider .bx-controls-direction{
     border: 0px solid blue;
