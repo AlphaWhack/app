@@ -1,0 +1,48 @@
+
+{# src/WhackUp/ManageBundle/Resources/views/Disco/image.html.twig #}
+
+{% extends "WhackUpManageBundle:Disco:index.html.twig" %}
+
+
+{% block title %}WhackUp | edit : {{ disco.nom }}{% endblock %}
+
+
+
+{% block side_right %}
+    <div class="side-right">
+        <div class="title">
+            <a href="{{ path('whack_up_manage_view_disco', { 'id': disco.id }) }}" title="Consulter" ><span class="glyphicon glyphicon-info-sign"> </span> Voir </a>  |
+            Modification : {{ disco.nom|upper }} </div>
+        <div class="content">
+
+            {{ form_start(form, { 'action': path('whack_up_manage_edit_disco_image', { 'id': disco.id }), 'attr': { 'class': 'whack_up_manage_edit_disco_image' } }) }}
+            <div class="info-form">
+                {{ form_errors(form.file) }}
+                {{ msg_form }}
+            </div>
+            <div class="form-group ">
+                <div class="input-group">
+                    Nouvelle Image :<br/>
+                    {{ form_widget(form.file, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
+            <div class="form-group m-maj" >
+                <input type="submit" class="form-control btn btn-default" value="{{ 'Valider'|trans }}" />
+            </div>
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

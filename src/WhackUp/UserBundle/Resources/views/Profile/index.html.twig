@@ -1,8 +1,8 @@
 {# src/WhackUp/UserBundle/Resources/views/Profile/index.html.twig #}
 
 
-{% if is_granted('ROLE_ADMIN') %}
-    {% set parent = 'WhackUpManageBundle:Disco:index.html.twig' %}
+{% if is_granted('ROLE_ADMIN') == true %}
+    {% set parent = 'WhackUpManageBundle:Default:index.html.twig' %}
 {% else %}
     {% set parent = 'WhackUpCoreBundle:Disco:index.html.twig' %}
 {% endif %}
@@ -10,7 +10,7 @@
 {% extends parent %}
 
 
-{% block title %}{{ parent() }} | {{ app.user.username }}{% endblock %}
+{% block title %}Profil | {{ app.user.username }}{% endblock %}
 
 
 {% block block_container_tools_menu %}
@@ -23,7 +23,7 @@
     <div class="top-profil-user">
         {% if is_granted('ROLE_ADMIN') == false %}
         <span class="item-logo">
-            <a href="{% block link_logo %} {{ path('whack_up_home') }} {% endblock %}">
+            <a href=" {{ path('whack_up_home') }}">
                 <img src="{{asset('bundles/whackup/img/Logo.png') }}" />
             </a>
         </span>

@@ -149,6 +149,17 @@ class DiscoController extends Controller
 
     public function sliderAction(Request $request)
     {
-        return $this->render('WhackUpCoreBundle:Disco:slider.html.twig');
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('WhackUpManageBundle:Advert')
+        ;
+        $adverts = $repository->findActually(1);
+
+        return $this->render('WhackUpCoreBundle:Disco:slider.html.twig',
+            array(
+                'adverts' => $adverts,
+            )
+        );
     }
 }

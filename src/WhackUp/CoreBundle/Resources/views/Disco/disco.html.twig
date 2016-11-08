@@ -13,7 +13,11 @@
                                     {% endif %}" id="{{ disco.id }}"></div>
             <div class="disco">
                 <div class="disco-cover">
-                    <img src="{{asset('bundles/whackup/file/disco/Tof-6.jpg') }}" />
+                    {% if disco.image == null %}
+                        <img src="{{asset('bundles/whackup/file/disco/Tof-6.jpg') }}" />
+                    {% else %}
+                        <img src="{{ asset(disco.image.uploadDir ~ '/' ~ disco.image.url) }}" alt="{{ disco.image.url }}" />
+                    {% endif %}
                     <div class="wrap-cover-play" data="{{ disco.connexion }}">
                         <img src="{{asset('bundles/whackup/img/play.png') }}" />
                     </div>

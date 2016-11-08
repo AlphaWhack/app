@@ -14,6 +14,8 @@
 
 {% block page %}page-user{% endblock %}
 
+{% block link_logo %}{{ path('whack_up_home') }} {% endblock %}
+
 
 
 {% block block_lecteur_dj %}
@@ -31,10 +33,10 @@
 
 {% block block_menu_user %}
                  <div class="wrap-item-menu">
-                        <div class="item">
+                        <div class="item fire active">
                             <a data-toggle="tab" href="#home" > <span class="glyphicon glyphicon-globe"></span> D&eacute;couverte </a> {#href="{{ path('whack_up_home') }}"#}
                         </div>
-                        <div class="item"> <a href="#us" data-toggle="tab" >Whackup</a></div>
+                        <div class="item fire"> <a href="#us" data-toggle="tab" >Whackup</a></div>
                         <div class="item"> <a href="" >Blog </a></div>
                         <div class="item wrap-icon-search">
                             <span class="glyphicon glyphicon-search"></span>
@@ -202,8 +204,17 @@
         var initPlayer = new MediaElementPlayer('#player',{
             audioWidth: 250,
             enableAutosize: true,
-            features: ['playpause','progress','current','volume','fullscreen']
+            features: ['playpause','progress','current','volume','fullscreen'],
+            success: function (media, node, player) {
+                console.log(media.paused);
+            },
+            error : function(media, node, player) {
+                console.log('medialement problem is detected: %o', player.buffer);
+            }
         });
+        initPlayer.play();
+
+        
 
         $(".wrap-top-search #key-disco").keyup( function () {
             keyX = $.trim($(this).val());

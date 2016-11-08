@@ -1,0 +1,75 @@
+
+{# src/WhackUp/ManageBundle/Resources/views/Disco/view.html.twig #}
+
+{% extends "WhackUpManageBundle:Disco:index.html.twig" %}
+
+
+{% block title %}WhackUp | {{ disco.nom }}{% endblock %}
+
+
+
+{% block side_right %}
+    <div class="side-right">
+        <div class="title"> {{ disco.nom|upper }} </div>
+        <div class="content">
+            <div class="view-disco">
+                <div class="view-top">
+                    <div class="image-disco">
+                        {% if disco.image == null %}
+                            <img src="{{asset('bundles/whackup/file/disco/Tof-6.jpg') }}" />
+                        {% else %}
+                            <img src="{{ asset(disco.image.uploadDir ~ '/' ~ disco.image.url) }}" alt="{{ disco.image.url }}" />
+                        {% endif %}
+                    </div>
+                    <div class="image-disco-modif">
+                        <a href="{{ path('whack_up_manage_edit_disco_image', { 'id': disco.id }) }}" >
+                            <span class="glyphicon glyphicon-picture"> </span> Modifier l'image
+                        </a>
+                        <br/>
+                        <a href="{{ path('whack_up_manage_edit_disco', { 'id': disco.id }) }}" title="Modifier" >
+                            <span class="glyphicon glyphicon-pencil"> </span> Modifier Informations
+                        </a>
+                    </div>
+                </div>
+                <div class="view-bottom">
+                    <div class="row">
+                        <div class="col-md-3">Nom : </div>
+                        <div class="col-md-9">{{ disco.nom }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">Adresse : </div>
+                        <div class="col-md-9"> {{ disco.adresse }} </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">Complement d'adresse : </div>
+                        <div class="col-md-9">{{ disco.complement }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">Site Web : </div>
+                        <div class="col-md-9"><a href="http:\\{{ disco.web }}">{{ disco.web }}</a></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">Description : </div>
+                        <div class="col-md-9"><i>{{ disco.description }} </i></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-9">Ajout&eacute; le : {{ disco.created|date('d-m-Y') }} </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,7 +7,7 @@
 {% block title %}{{ parent() }} | Administration des Disco{% endblock %}
 
 
-
+{% block page_disco %}active{% endblock %}
 
 {% block side_left %}
     <div class="side-left">
@@ -15,7 +15,7 @@
             <div class="title"> <span class="glyphicon glyphicon-menu-hamburger"></span> Menu des discos</div>
             <div class="content">
                     <ul>
-                        <li><a href="{{ path('whack_up_manage_homepage') }}"> <span class="glyphicon glyphicon-book"></span> Nos discos</a></li>
+                        <li><a href="{{ path('whack_up_manage_disco') }}"> <span class="glyphicon glyphicon-book"></span> Nos discos</a></li>
                         <li><a href="{{ path('whack_up_manage_add_disco') }}"> <span class="glyphicon glyphicon-plus-sign"></span> Ajouter une disco</a></li>
                     </ul>
             </div>
@@ -42,8 +42,8 @@
                         <td class="nom"> {{ disco.nom }}</td>
                         <td class="addr"> {{ disco.adresse }}</a></td>
                         <td class="web"> <a href="http://{{ disco.web }}" target="_blank">{{ disco.web }} </a></td>
-                        <td class="option"> <a href="" title="Consulter" ><span class="glyphicon glyphicon-info-sign"> </span> </a> </td>
-                        <td class="option"> <a href="" title="Modifier" ><span class="glyphicon glyphicon-pencil"> </span> </a> </td>
+                        <td class="option"> <a href="{{ path('whack_up_manage_view_disco', { 'id': disco.id }) }}" title="Consulter" ><span class="glyphicon glyphicon-info-sign"> </span> </a> </td>
+                        <td class="option"> <a href="{{ path('whack_up_manage_edit_disco', { 'id': disco.id }) }}" title="Modifier" ><span class="glyphicon glyphicon-pencil"> </span> </a> </td>
                         <td class="option"> <a href="" title="Supprimer" ><span class="glyphicon glyphicon-remove-sign"> </span> </a> </td>
                     </tr>
                     {% endfor %}

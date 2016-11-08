@@ -1,0 +1,83 @@
+
+{# src/WhackUp/ManageBundle/Resources/views/Disco/edit.html.twig #}
+
+{% extends "WhackUpManageBundle:Disco:index.html.twig" %}
+
+
+{% block title %}WhackUp | edit : {{ disco.nom }}{% endblock %}
+
+
+
+{% block side_right %}
+    <div class="side-right">
+        <div class="title">
+            <a href="{{ path('whack_up_manage_view_disco', { 'id': disco.id }) }}" title="Consulter" ><span class="glyphicon glyphicon-info-sign"> </span> Voir </a>  |
+            Modification : {{ disco.nom|upper }} </div>
+        <div class="content">
+
+            <form method='post' action="{{ path('whack_up_manage_edit_disco', { 'id': disco.id }) }}" enctype="multipart/form-data" novalidate="novalidate" class="disco" > {# novalidate="novalidate #}
+                <div class="info-form">
+                    {{ form_errors(form.nom) }}
+                    {{ form_errors(form.adresse) }}
+                    {{ form_errors(form.connexion) }}
+                    {% if message|trim %} <span class="glyphicon glyphicon-ok-circle"></span> Night Club <b>{{ message }}</b> have been updated...</span> {% endif %}
+
+                </div>
+                <div class="form-group ">
+                    <div class="input-groupa">
+                        <div class="m-label"> Nom :</div>
+                        {{ form_widget(form.nom, {'attr': {'class': 'form-control','placeholder':'Nom de la disco','value':disco.nom }}) }}
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="input-groupa">
+                        <div class="m-label"> Adresse :</div>
+                        {{ form_widget(form.adresse, {'attr': {'class': 'form-control','placeholder':'Adresse de la disco','value':disco.adresse}}) }}
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="input-groupa">
+                        <div class="m-label">Pr&eacute;cision :</div>
+                        {{ form_widget(form.complement, {'attr': {'class': 'form-control','placeholder':'Complement adresse','value':disco.complement}}) }}
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="input-groupa">
+                        <div class="m-label">Adresse internet :</div>
+                        {{ form_widget(form.web, {'attr': {'class': 'form-control','placeholder':'Url du site de la disco','value':disco.web}}) }}
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="input-groupa">
+                        <div class="m-label">Url connexion :</div>
+                        {{ form_widget(form.connexion, {'attr': {'class': 'form-control','placeholder':'Url de connexion','value':disco.connexion}}) }}
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="input-groupa">
+                        <div class="m-label">Description :</div>
+                        {{ form_widget(form.description, {'attr': {'class': 'form-control','placeholder':'Un descriptif','value':disco.description}}) }}
+                    </div>
+                </div>
+                {{ form_rest(form) }}
+                <div class="form-group m-form-register">
+                    <button type="submit" class="form-control btn btn-default">Valider</button>
+                </div>
+            </form>
+            {# {{ form_end(form) }} #}
+
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

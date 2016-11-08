@@ -1,0 +1,95 @@
+
+{# src/WhackUp/ManageBundle/Resources/views/Advert/add.html.twig #}
+
+{% extends "WhackUpManageBundle:Advert:index.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" media="screen" type="text/css" href="{{ asset('bundles/whackup/css/bootstrap-datepicker.css') }}"/>
+{% endblock %}
+{% block javascripts_top %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{asset('bundles/whackup/js/bootstrap-datepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{asset('bundles/whackup/js/bootstrap-datepicker.fr.min.js') }}"></script>
+{% endblock %}
+
+{% block title %}Ajouter une annonce{% endblock %}
+
+
+
+{% block side_right %}
+    <div class="side-right">
+        <div class="title"> Ajouter une annonce </div>
+        <div class="content">
+
+            <form method='post' action="{{ path('whack_up_manage_pub_add') }}" enctype="multipart/form-data" novalidate="novalidate" class="disco" > {# novalidate="novalidate #}
+            {#   {{ form_start(form, {'attr': {'class': 'disco','novalidate':'novalidate'}}) }} #}
+                <div class="info-form">
+                    {{ form_errors(form.title) }}
+                    {{ form_errors(form.description) }}
+                    {{ form_errors(form.file) }}
+                    {{ form_errors(form.dateEnd) }}
+                    {% if message|trim %} <span class="glyphicon glyphicon-ok-circle"></span> Advertising for <b>{{ message }}</b> have been saved...</span> {% endif %}
+
+                </div>
+                <div class="form-group ">
+                    <div class="input-groupa">
+                        <div class="m-label"> Nom :</div>
+                        {{ form_widget(form.title, {'attr': {'class': 'form-control','placeholder':'Nom de la disco'}}) }}
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="input-groupa">
+                        <div class="m-label">Description :</div>
+                        {{ form_widget(form.description, {'attr': {'class': 'form-control','placeholder':'Un descriptif'}}) }}
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="input-groupa">
+                        <div class="m-label">Image  :</div>
+                        {{ form_widget(form.file, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="input-groupa">
+                        <div class="m-label"> Url &eacute;venement :</div>
+                        {{ form_widget(form.web, {'attr': {'class': 'form-control','placeholder':'Lien evenement'}}) }}
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <div class="input-groupa">
+                        <div class="m-label"> Fin annonce :</div>
+                        {{ form_widget(form.dateEnd, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                    {{ form_rest(form) }}
+                <div class="form-group m-form-register">
+                    <button type="submit" class="form-control btn btn-default">Register</button>
+                </div>
+             </form>
+
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script type="text/javascript" >
+       // $('.js-datepicker').datepicker();
+    </script>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

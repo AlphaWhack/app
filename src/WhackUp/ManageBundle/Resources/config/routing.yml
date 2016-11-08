@@ -4,9 +4,38 @@ whack_up_manage_homepage:
     path:     /
     defaults: { _controller: WhackUpManageBundle:Disco:index }
 
+whack_up_manage_disco:
+    path:     /disco
+    defaults: { _controller: WhackUpManageBundle:Disco:index }
+
 whack_up_manage_add_disco:
-    path:     /adddisco
-    defaults: { _controller: WhackUpManageBundle:Disco:adddisco }
+    path:     /disco/add
+    defaults: { _controller: WhackUpManageBundle:Disco:add }
+
+whack_up_manage_view_disco:
+    path:     /disco/{id}/view
+    defaults: { _controller: WhackUpManageBundle:Disco:view }
+    requirements:
+       id : \d*
+whack_up_manage_edit_disco:
+    path:     /disco/{id}/edit
+    defaults: { _controller: WhackUpManageBundle:Disco:edit }
+    requirements:
+       id : \d*
+
+whack_up_manage_edit_disco_image:
+    path:     /disco/{id}/edit/image
+    defaults: { _controller: WhackUpManageBundle:Disco:editimage }
+    requirements:
+       id : \d*
+
+whack_up_manage_pub:
+    path:     /advert
+    defaults: { _controller: WhackUpManageBundle:Advert:index }
+
+whack_up_manage_pub_add:
+    path:     /advert/add
+    defaults: { _controller: WhackUpManageBundle:Advert:add }
 
 
 admin_login:

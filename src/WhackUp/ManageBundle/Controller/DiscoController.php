@@ -7,7 +7,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 use WhackUp\ManageBundle\Entity\Disco;
 use WhackUp\ManageBundle\Form\DiscoType;
-use WhackUp\ManageBundle\Entity\ImageDiso;
+use WhackUp\ManageBundle\Form\ImageDiscoType;
+use WhackUp\ManageBundle\Entity\ImageDisco;
 
 class DiscoController extends Controller
 {
@@ -36,7 +37,7 @@ class DiscoController extends Controller
             ));
     }
 
-    public function addDiscoAction(Request $request)
+    public function addAction(Request $request)
     {
         $message = "";
         $user= $this->getUser();
@@ -71,6 +72,128 @@ class DiscoController extends Controller
         return $this->render('WhackUpManageBundle:Disco:add.html.twig', array(
             'form' => $form->createView(),
             'message' => $message,
+        ));
+    }
+
+    public function viewAction(Request $request,$id)
+    {
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('WhackUpManageBundle:Disco')
+        ;
+        $disco = $repository->find($id);
+
+        if($disco == null){
+            $err = "error sur ".$id;
+            var_dump($err);
+            die;
+        }
+
+        return $this->render('WhackUpManageBundle:Disco:view.html.twig', array(
+            'disco' => $disco,
+        ));
+    }
+
+    public function editAction(Request $request,$id)
+    {
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('WhackUpManageBundle:Disco')
+        ;
+        $disco = $repository->find($id);
+
+        if($disco == null){
+            $err = "error sur ".$id;
+            var_dump($err);
+            die;
+        }
+
+        $message = "";
+        //$discoObj = new Disco();
+        $form = $this->get('form.factory')->create(DiscoType::class, $disco);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($disco);
+            $em->flush();
+
+            $message = $disco->getNom();
+
+            return $this->render('WhackUpManageBundle:Disco:edit.html.twig', array(
+                'form' => $form->createView(),
+                'message' => $message,
+                'disco' => $disco,
+            ));
+        }
+
+        return $this->render('WhackUpManageBundle:Disco:edit.html.twig', array(
+            'form' => $form->createView(),
+            'message' => $message,
+            'disco' => $disco,
+        ));
+    }
+
+    public function editImageAction(Request $request,$id)
+    {
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('WhackUpManageBundle:Disco')
+        ;
+        $disco = $repository->find($id);
+
+        $message = "";
+        $new_image = new ImageDisco();
+        //$new_image = ImageDisco::class;
+        $form = $this->get('form.factory')->create(ImageDiscoType::class, $new_image);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            // get id old picture
+            $old_image = $disco->getImage();
+
+            // moving image
+            $new_image->upload();
+            // set image to user
+            $disco->setImage($new_image);
+
+            // insert into BD
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($disco);
+
+            // if image (old picture) is already define
+            if($old_image != null){
+                // get old picture on database to remove that on file
+                $repository = $em->getRepository('WhackUpManageBundle:ImageDisco');
+                $imageToRemove = $repository->find($old_image->getId());
+                //remove old picture on folder
+                if($imageToRemove != null){
+                    $nameImageToRemove = $imageToRemove->getUrl();
+                    $oldFile = __DIR__.'/../../../../web/'.$imageToRemove->getUploadDir().'/'.$nameImageToRemove;
+                    if (file_exists($oldFile)) {
+                        unlink($oldFile);
+                    }
+                }
+
+                $em->remove($old_image);
+            }
+            $em->flush();
+
+            $message = "You picture have been updated ...";
+
+        }
+
+        return $this->render('WhackUpManageBundle:Disco:image.html.twig', array(
+            'form' => $form->createView(),
+            'msg_form' => $message,
+            'disco' => $disco,
         ));
     }
 
