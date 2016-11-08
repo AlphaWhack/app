@@ -19,22 +19,15 @@ $(document).ready(function(){
         });
     }
 
-        /*
-        $.ajax({
-            type        : $('#form-connexion').attr( 'method' ),
-            url         : '{{ path("fos_user_security_check") }}',
-            data        : $('form').serialize(),
-            dataType    : "json",
-            success     : function(data, status, object) {
-                if(data.error) $('.msg-connexion').html(data.message);
-            },
-            error: function(data, status, object){
-                console.log(data.message);
-                $('.msg-connexion').html(data.message);
-            }
+    /**
+    *  Fire to know which onglet are we there
+    * */
+    $(".wrap-item-menu .item.fire").each(function(){
+        $(this).click(function(){
+            $(".wrap-item-menu .item.fire").removeClass("active");
+            $(this).addClass("active");
         });
-
-        */
+    });
 
     $(".min-profil-name").click(function(){
         if($(".pseudo-profil").find(".glyphicon").hasClass("glyphicon-menu-down")){
@@ -103,12 +96,9 @@ $(document).ready(function(){
     });
 
     /*
-    var player = new MediaElementPlayer('#player',{
-        audioWidth: 250,
-        enableAutosize: true,
-        features: ['playpause','progress','current','volume','fullscreen']
-    });
-    */
+    admin
+     */
+
 
 
 
