@@ -37,6 +37,34 @@ whack_up_manage_pub_add:
     path:     /advert/add
     defaults: { _controller: WhackUpManageBundle:Advert:add }
 
+whack_up_manage_pub_view:
+    path:     /advert/{id}/view
+    defaults: { _controller: WhackUpManageBundle:Advert:view }
+    requirements:
+           id : \d*
+
+whack_up_manage_pub_edit:
+    path:     /advert/{id}/edit
+    defaults: { _controller: WhackUpManageBundle:Advert:edit }
+    requirements:
+           id : \d*
+
+whack_up_manage_pub_state:
+    path:     /advert/{id}/statut
+    defaults: { _controller: WhackUpManageBundle:Advert:changestate }
+    requirements:
+           id : \d*
+
+whack_up_manage_user:
+    path:     /users
+    defaults: { _controller: WhackUpManageBundle:Users:index }
+
+whack_up_manage_user_view:
+    path:     /users/{id}/view
+    defaults: { _controller: WhackUpManageBundle:Users:view }
+    requirements:
+           id : \d*
+
 
 admin_login:
     path:  /login

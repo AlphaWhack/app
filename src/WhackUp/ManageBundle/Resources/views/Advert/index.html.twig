@@ -4,7 +4,7 @@
 {% extends "WhackUpManageBundle:Default:index.html.twig" %}
 
 
-{% block title %}{{ parent() }} | Administration des Pub{% endblock %}
+{% block title %}{{ parent() }} | Administration des Annonces{% endblock %}
 
 
 {% block page_advert %}active{% endblock %}
@@ -13,11 +13,11 @@
 {% block side_left %}
     <div class="side-left">
         <div class="wrap-block">
-            <div class="title"> <span class="glyphicon glyphicon-menu-hamburger"></span> Menu des Pub</div>
+            <div class="title"> <span class="glyphicon glyphicon-menu-hamburger"></span> Racourcis des Annonces</div>
             <div class="content">
                     <ul>
-                        <li><a href="{{ path('whack_up_manage_pub') }}"> <span class="glyphicon glyphicon-book"></span> Nos Pub</a></li>
-                        <li><a href="{{ path('whack_up_manage_pub_add') }}"> <span class="glyphicon glyphicon-plus-sign"></span> Ajouter une Pub</a></li>
+                        <li><a href="{{ path('whack_up_manage_pub') }}"> <span class="glyphicon glyphicon-book"></span> Nos Annonces</a></li>
+                        <li><a href="{{ path('whack_up_manage_pub_add') }}"> <span class="glyphicon glyphicon-plus-sign"></span> Ajouter une Annonce</a></li>
                     </ul>
             </div>
         </div>
@@ -51,19 +51,22 @@
                                  </span>
 
                                  <span class="details">
-                                     <a href="http:\\{{ advert.web }}" title="lien annonce"> <span class="glyphicon glyphicon-globe"></span></a>
+                                     <a href="http:\\{{ advert.web }}" target="_blank" title="lien annonce"> <span class="glyphicon glyphicon-globe"></span></a>
                                  </span>
 
                                  <span class="details">
-                                     <a href="" title="modifier annonce"> <span class="glyphicon glyphicon-pencil"></span></a>
+                                     <a href="{{ path('whack_up_manage_pub_edit',{ 'id': advert.id }) }}" title="modifier annonce"> <span class="glyphicon glyphicon-pencil"></span></a>
                                  </span>
 
                              </div>
                          </div>
                          <div class="wrap-side-right">
                              <div class="titre">{{ advert.title }}</div>
-                             <div class="description">{{ advert.description }}</div>
-                             <div class="created">Ajout&eacute;e le {{ advert.created|date('d F Y') }}</div>
+                             <div class="description">{{ advert.description | truncate(410, false, '...') }}</div>
+                             <div class="created">
+                                 <a href="{{ path('whack_up_manage_pub_view',{ 'id': advert.id }) }}" ><span class="glyphicon glyphicon-info-sign"></span> Apercu de l'annonce</a>
+                                 - Ajout&eacute;e le {{ advert.created|date('d F Y') }}
+                             </div>
                          </div>
                      </div>
                 {% endfor %}

@@ -12,7 +12,7 @@
 {% block side_left %}
     <div class="side-left">
         <div class="wrap-block">
-            <div class="title"> <span class="glyphicon glyphicon-menu-hamburger"></span> Menu des discos</div>
+            <div class="title"> <span class="glyphicon glyphicon-menu-hamburger"></span> Racourcis des discos</div>
             <div class="content">
                     <ul>
                         <li><a href="{{ path('whack_up_manage_disco') }}"> <span class="glyphicon glyphicon-book"></span> Nos discos</a></li>
@@ -34,14 +34,15 @@
                     <thead>
                         <td> Disco</td>
                         <td> Adresse </td>
-                        <td> Site web</td>
-                        <td colspan="3"> </td>
+                        <td> Date ajout</td>
+                        <td colspan="4"> Racourcis </td>
                     </thead>
                     {% for disco in discos %}
                     <tr class="item">
                         <td class="nom"> {{ disco.nom }}</td>
                         <td class="addr"> {{ disco.adresse }}</a></td>
-                        <td class="web"> <a href="http://{{ disco.web }}" target="_blank">{{ disco.web }} </a></td>
+                        <td class="web">{{ disco.created|date('d-m-Y') }}</td>
+                        <td class="option"> <a href="http:\\{{disco.web }}" title="Lien site" target="_blank"><span class="glyphicon glyphicon-globe"> </span> </a> </td>
                         <td class="option"> <a href="{{ path('whack_up_manage_view_disco', { 'id': disco.id }) }}" title="Consulter" ><span class="glyphicon glyphicon-info-sign"> </span> </a> </td>
                         <td class="option"> <a href="{{ path('whack_up_manage_edit_disco', { 'id': disco.id }) }}" title="Modifier" ><span class="glyphicon glyphicon-pencil"> </span> </a> </td>
                         <td class="option"> <a href="" title="Supprimer" ><span class="glyphicon glyphicon-remove-sign"> </span> </a> </td>

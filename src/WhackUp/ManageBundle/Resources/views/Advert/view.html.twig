@@ -1,60 +1,47 @@
 
-{# src/WhackUp/ManageBundle/Resources/views/Disco/view.html.twig #}
+{# src/WhackUp/ManageBundle/Resources/views/Advert/view.html.twig #}
 
-{% extends "WhackUpManageBundle:Disco:index.html.twig" %}
+{% extends "WhackUpManageBundle:Advert:index.html.twig" %}
 
 
-{% block title %}WhackUp | {{ disco.nom }}{% endblock %}
+{% block title %}WhackUp | {{ advert.title }}{% endblock %}
 
 
 
 {% block side_right %}
     <div class="side-right">
-        <div class="title"> {{ disco.nom|upper }} </div>
+        <div class="title">
+            <span class="option">
+                <a href="{{ path('whack_up_manage_pub_edit',{ 'id': advert.id }) }}"><span class="glyphicon glyphicon-edit"></span> Modifier</a>
+            </span>
+            <span class="info">
+                {{ advert.title }}
+            </span>
+        </div>
         <div class="content">
-            <div class="view-disco">
+            <div class="view-advert">
                 <div class="view-top">
-                    <div class="image-disco">
-                        {% if disco.image == null %}
-                            <img src="{{asset('bundles/whackup/file/disco/Tof-6.jpg') }}" />
-                        {% else %}
-                            <img src="{{ asset(disco.image.uploadDir ~ '/' ~ disco.image.url) }}" alt="{{ disco.image.url }}" />
-                        {% endif %}
-                    </div>
-                    <div class="image-disco-modif">
-                        <a href="{{ path('whack_up_manage_edit_disco_image', { 'id': disco.id }) }}" >
-                            <span class="glyphicon glyphicon-picture"> </span> Modifier l'image
-                        </a>
-                        <br/>
-                        <a href="{{ path('whack_up_manage_edit_disco', { 'id': disco.id }) }}" title="Modifier" >
-                            <span class="glyphicon glyphicon-pencil"> </span> Modifier Informations
-                        </a>
-                    </div>
+                    <img src="{{ asset(advert.uploadDir ~ '/' ~ advert.picture) }}" alt="{{ advert.title }}" >
                 </div>
                 <div class="view-bottom">
-                    <div class="row">
-                        <div class="col-md-3">Nom : </div>
-                        <div class="col-md-9">{{ disco.nom }}</div>
+                    <div class="titre">{{ advert.title }}</div>
+                    <div class="description">{{ advert.description }}</div>
+                    <div class="statut">
+                        Statut de l'annonce :
+                        {% if advert.actived == 1 %}
+                            <span class="m-show">Affich&eacute;e</span>
+                            (<a href="{{ path('whack_up_manage_pub_state',{ 'id': advert.id }) }}"><span class="glyphicon glyphicon-eye-close"></span> Masquer</a>)
+                        {% else %}
+                            <span class="m-hide">Masqu&eacute;e</span>
+                            (<a href="{{ path('whack_up_manage_pub_state',{ 'id': advert.id }) }}"><span class="glyphicon glyphicon-eye-open"></span> Afficher</a>)
+                        {% endif %}
                     </div>
-                    <div class="row">
-                        <div class="col-md-3">Adresse : </div>
-                        <div class="col-md-9"> {{ disco.adresse }} </div>
+                    <div class="deadline">
+                        Date de l'&eacute;v&egrave;nement : {{ advert.dateend|date('d F Y') }}
                     </div>
-                    <div class="row">
-                        <div class="col-md-3">Complement d'adresse : </div>
-                        <div class="col-md-9">{{ disco.complement }}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">Site Web : </div>
-                        <div class="col-md-9"><a href="http:\\{{ disco.web }}">{{ disco.web }}</a></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">Description : </div>
-                        <div class="col-md-9"><i>{{ disco.description }} </i></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3"></div>
-                        <div class="col-md-9">Ajout&eacute; le : {{ disco.created|date('d-m-Y') }} </div>
+                    <div class="created">
+                        <a href="http:\\{{ advert.web }}" target="_blank" title="lien annonce"> <span class="glyphicon glyphicon-globe"></span></a>
+                        - Ajout&eacute;e le {{ advert.created|date('d F Y') }}
                     </div>
                 </div>
             </div>

@@ -1,0 +1,77 @@
+
+{# src/WhackUp/ManageBundle/Resources/views/Users/index.html.twig #}
+
+{% extends "WhackUpManageBundle:Default:index.html.twig" %}
+
+
+{% block title %}{{ parent() }} | Administration des utilisateurs{% endblock %}
+
+{% block page_users %}active{% endblock %}
+
+{% block side_left %}
+    <div class="side-left">
+        <div class="wrap-block">
+            <div class="title"> <span class="glyphicon glyphicon-menu-hamburger"></span> Racourcis Utiisateur</div>
+            <div class="content">
+                    <ul>
+                        <li><a href="{{ path('whack_up_manage_user') }}"> <span class="glyphicon glyphicon-link"></span> Tous les utilisateurs</a></li>
+                        {% for role in listroles %}
+                            <li><a href="?group={{ role }}"> <span class="glyphicon glyphicon-link"></span> {{ role|lower|trim|replace({'ROLE': "", '_': " "}) }}</a></li>
+                        {% endfor %}
+                    </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block side_right %}
+    <div class="side-right">
+        <div class="title">
+            Tous les {{ group }} ({{ nbreuser }})
+        </div>
+        <div class="content">
+            {% if users is empty %}
+                il ya pas des {{ group|lower }}
+            {% else %}
+                <table class="tab-list-users">
+                    <thead>
+                        <td> Login</td>
+                        <td> Email </td>
+                        <td> Type Compte</td>
+                        <td> Derniere Connexion</td>
+                        <td colspan="1"> Racourcis </td>
+                    </thead>
+                    {% for u in users %}
+                    <tr class="item">
+                        <td class="pseudo"> {{ u.username }}</td>
+                        <td class="mail"> {{ u.email }}</a></td>
+                        <td class="account">
+                            {% for role in u.roles %}
+                                {% if loop.last %}
+                                    {{ role|trim|replace({'ROLE': "", '_': " "}) }}
+                                {% else %}
+                                    {{ role|trim|replace({'ROLE': "", '_': " "}) }},
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td class="last-login">{{ u.lastlogin|date('d F Y') }}</td>
+                        <td class="option"> <a href="{{ path('whack_up_manage_user_view', { 'id': u.id }) }}" title="Consulter" ><span class="glyphicon glyphicon-info-sign"> </span> </a> </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

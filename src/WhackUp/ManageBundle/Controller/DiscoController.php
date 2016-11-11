@@ -85,9 +85,7 @@ class DiscoController extends Controller
         $disco = $repository->find($id);
 
         if($disco == null){
-            $err = "error sur ".$id;
-            var_dump($err);
-            die;
+            return $this->redirectToRoute('whack_up_manage_disco');
         }
 
         return $this->render('WhackUpManageBundle:Disco:view.html.twig', array(

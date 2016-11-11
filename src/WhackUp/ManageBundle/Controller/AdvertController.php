@@ -73,19 +73,96 @@ class AdvertController extends Controller
 
     public function viewAction(Request $request,$id)
     {
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('WhackUpManageBundle:Advert')
+        ;
+        $advert = $repository->find($id);
+
+        if($advert == null){
+            return $this->redirectToRoute('whack_up_manage_pub');
+        }
+
         return $this->render('WhackUpManageBundle:Advert:view.html.twig', array(
-            //'disco' => $disco,
+            'advert' => $advert,
         ));
     }
 
     public function editAction(Request $request,$id)
     {
+        $message = "";
+
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('WhackUpManageBundle:Advert')
+        ;
+        $advert = $repository->find($id);
+
+        if($advert == null){
+            return $this->redirectToRoute('whack_up_manage_pub');
+        }
+        $nameImg = $advert->getPicture();
+        $form = $this->get('form.factory')->create(AdvertType::class, $advert);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            // moving image
+            $advert->upload();
+            // save
+            $em->persist($advert);
+            $em->flush();
+
+            $oldFile = __DIR__.'/../../../../web/'.$advert->getUploadDir().'/'.$nameImg;
+            if (file_exists($oldFile)) {
+                unlink($oldFile);
+            }
+
+            $message = $advert->getTitle();
+
+            $advert = new Advert();
+            $form = $this->get('form.factory')->create(AdvertType::class, $advert);
+            return $this->render('WhackUpManageBundle:Advert:edit.html.twig', array(
+                'form' => $form->createView(),
+                'message' => $message,
+                'advert' => $advert,
+            ));
+        }
 
         return $this->render('WhackUpManageBundle:Advert:edit.html.twig', array(
-            //'form' => $form->createView(),
-            //'message' => $message,
-            //'disco' => $disco,
+            'form' => $form->createView(),
+            'message' => $message,
+            'advert' => $advert,
         ));
+    }
+
+    public function changeStateAction(Request $request,$id)
+    {
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('WhackUpManageBundle:Advert')
+        ;
+        $advert = $repository->find($id);
+
+        if($advert == null){
+            return $this->redirectToRoute('whack_up_manage_pub');
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        if($advert->getActived()){
+            $advert->setActived(0);  //off
+        }
+        else{
+            $advert->setActived(1); //on
+        }
+        $em->persist($advert);
+        $em->flush();
+        return $this->redirect( $this->generateUrl('whack_up_manage_pub_view', array('id' => $id)));
+
     }
 
 }

@@ -23,16 +23,16 @@
 {% block block_menu_user %}
      <div class="wrap-item-menu-admin">
           <div class="item {% block page_disco %}{% endblock %}">
-              <a href="{{ path('whack_up_manage_disco') }}" >  Discoth&egrave;que</a>
+              <a href="{{ path('whack_up_manage_disco') }}" title="Gestion des discotheques" >  Discoth&egrave;que</a>
           </div>
           <div class="item {% block page_advert %}{% endblock %}">
-              <a href="{{ path('whack_up_manage_pub') }}" >  Annonce </a>
+              <a href="{{ path('whack_up_manage_pub') }}" title="Gestion des annonces" >  Annonce </a>
           </div>
-          <div class="item">
-              <a href="" > Module 3 </a>
+          <div class="item {% block page_users %}{% endblock %}">
+              <a href="{{ path('whack_up_manage_user') }}" title="Gestion des utilisateurs" > Utilisateur </a>
           </div>
-          <div class="item">
-              <a href="" > Module 4 </a>
+          <div class="item {% block page_config %}{% endblock %}">
+              <a href="" > Configuration </a>
           </div>
      </div>
 {% endblock %}
