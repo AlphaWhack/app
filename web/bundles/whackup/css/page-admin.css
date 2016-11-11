@@ -71,6 +71,7 @@ body{
     -webkit-border-radius: 6px 6px 0px 0px;
     -moz-border-radius: 6px 6px 0px 0px;
     font-weight: bold;
+    font-variant:small-caps;
 }
 .wrap-block .content{
     position:relative;
@@ -86,6 +87,7 @@ body{
 }
 .wrap-block .content ul li{
     margin-bottom: 10px;
+    font-variant:small-caps;
 }
 .wrap-block .content ul li a{
     color:#fff;
@@ -113,6 +115,7 @@ body{
     line-height: 28px;
     text-align: right;
     margin-bottom: 10px;
+    font-variant:small-caps;
 }
 .side-right .content{
     position:relative;
@@ -150,6 +153,10 @@ body{
 .side-right form.disco .form-group.m-form-register{
     text-align: center;
 }
+.side-right form textarea{
+    border:0px solid green;
+    height: 200px;
+}
 .side-right form.disco .m-form-register button.btn{
     position: relative;
      margin:auto 0px;
@@ -167,30 +174,39 @@ body{
     padding-right:10px;
 }
 
+.side-right .tab-list-users,
 .side-right .tab-list-disco{
     margin-bottom: 10px;
     width:100%;
 }
+.side-right .tab-list-users thead,
 .side-right .tab-list-disco thead{
     background: #ffa500;
     color:#000;
     font-weight: bold;
+    font-variant:small-caps;
 }
+.side-right .tab-list-users thead tr,
 .side-right .tab-list-disco thead tr{
     height: 30px;
 }
+.side-right .tab-list-users thead td,
 .side-right .tab-list-disco thead td{
     border:1px solid #ffa500;
 }
+.side-right .tab-list-users tr.item,
 .side-right .tab-list-disco tr.item{
 
 }
+.side-right .tab-list-users tr.item:hover,
 .side-right .tab-list-disco tr.item:hover{
     opacity: 0.7;
 }
+.side-right .tab-list-users tr.item td,
 .side-right .tab-list-disco tr.item td{
    padding:5px 0px;
 }
+.side-right .tab-list-users td,
 .side-right .tab-list-disco td{
     border:1px solid #ffa500;
     text-align: center;
@@ -199,15 +215,25 @@ body{
     width:200px;
 }
 .side-right .tab-list-disco td.addr{
-    width:180px;
+    width:250px;
 }
-.side-right .tab-list-disco td.web{}
+.side-right .tab-list-disco td.web{
+    width: 100px;
+}
+.side-right .tab-list-users td.option,
 .side-right .tab-list-disco td.option{
     width: 30px;
     text-align: center;
 }
 .side-right .tab-list-disco td.web a,
 .side-right .tab-list-disco td.option a{color:#fff;}
+
+.side-right .tab-list-users td.pseudo{width:150px;}
+.side-right .tab-list-users td.mail{width:250px;}
+.side-right .tab-list-users td.account{width:200px;}
+.side-right .tab-list-users td.last-login{width:150px;}
+.side-right .tab-list-users td.option{width:100px;}
+.side-right .tab-list-users td.option a{color:white;}
 
 .side-right .view-disco{}
 .side-right .view-disco .view-top{
@@ -316,15 +342,89 @@ body{
 .wrap-advert .wrap-side-right > div{
     margin-bottom: 10px;
 }
+
 .wrap-advert .wrap-side-right div.titre{
     font-variant:small-caps;
 }
 .wrap-advert .wrap-side-right div.description{
     text-align: justify;
 }
+.wrap-advert .wrap-side-right div.created a{
+    color:white;
+}
 .wrap-advert .wrap-side-right div.created{
     font-size:12px;
     font-style: italic;
+}
+
+.side-right .title .option{
+    margin-right:15px;
+}
+.side-right .title .option a{
+    margin-right: 10px;
+}
+.side-right .title .info{
+    border-left:1px solid white;
+    padding-left:10px;
+}
+
+.side-right .view-advert{
+    position:relative;
+    float:left;
+    width:100%;
+    height:auto;
+    border:0px solid red;
+}
+.side-right .view-advert .view-top{
+    position:relative;
+    float:left;
+    width:100%;
+    height:250px;
+    border:0px solid orange;
+}
+.side-right .view-advert .view-top img{
+    width:auto;
+    heignt:auto;
+    max-width:100%;
+    max-height:250px;
+}
+.side-right .view-advert .view-bottom{
+    position:relative;
+    float:left;
+    width:100%;
+    height:auto;
+    border:0px solid chocolate;
+    margin-top:15px;
+}
+.side-right .view-advert .view-bottom .titre{
+    font-variant:small-caps;
+}
+.side-right .view-advert .view-bottom .description{
+    margin-top:5px;
+    margin-bottom:10px;
+    text-align: justify;
+}
+
+.side-right .view-advert .view-bottom .statut a{
+    color:white;
+}
+.side-right .view-advert .view-bottom .statut{
+    margin-bottom:10px;
+}
+.side-right .view-advert .view-bottom .statut .m-show{
+    color:green;
+}
+.side-right .view-advert .view-bottom .statut .m-hide{
+    color:#ffa500;
+}
+.side-right .view-advert .view-bottom .deadline{
+    margin-bottom:10px;
+}
+.side-right .view-advert .view-bottom .created{
+    font-style: italic;
+}
+.side-right .view-advert .view-bottom .created a{
+    color:white;
 }
 
 
