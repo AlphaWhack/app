@@ -78,8 +78,7 @@ class RegistrationController extends Controller
                 
                 //==========//=====Création de la boundary
                 $boundary = "-----=".md5(rand());
-                //==========
-
+                //==========                                                                                                                                                                                                         
                 //=====Définition du sujet.
                 $sujet = "Inscription Whack'up";
                 //=========
@@ -117,7 +116,7 @@ class RegistrationController extends Controller
                 mail($mail1,$sujet,$message,$header);
                 //==========
                 //Fin ajout
-                $message = "You registration have been succeeded ... ";
+                $message = "Un mail de confirmation vous a été envoyé ... ";
 
                 return $this->render('WhackUpUserBundle:Default:register.html.twig', array(
                     'form' => $form->createView(),
