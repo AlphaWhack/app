@@ -49,11 +49,14 @@
                       <span class="glyphicon glyphicon-lock"></span> Changer Mot de passe
                   </a>
         </span>
+        {#
         <span class="item-profil {% block block_onglet_param %}{% endblock %}">
                   <a href="{% if is_granted('ROLE_ADMIN') %} {{ path('admin_param') }} {% else %} {{ path('whack_up_user_param') }} {% endif %} ">
                       <span class="glyphicon glyphicon-cog"></span> Param&egrave;tres
                   </a>
         </span>
+        #}
+
         {% if is_granted('ROLE_ADMIN') == false %}
         <span class="item-profil item-logout">
                   <a href="{{ path('fos_user_security_logout') }} ">
