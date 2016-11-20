@@ -65,6 +65,12 @@ whack_up_manage_user_view:
     requirements:
            id : \d*
 
+whack_up_manage_user_grant:
+    path:     /users/{id}/grant
+    defaults: { _controller: WhackUpManageBundle:Users:grant }
+    requirements:
+           id : \d*
+
 
 admin_login:
     path:  /login
