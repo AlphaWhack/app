@@ -11,7 +11,7 @@ $(document).ready(function(){
          });
      }
     if($('body').hasClass('page-user')){
-        var slider = $('.core-user.bxslider').bxSlider({
+        $('.core-user.bxslider').bxSlider({
             mode: 'horizontal',  //fade
             speed: 2000,
             auto: true,
