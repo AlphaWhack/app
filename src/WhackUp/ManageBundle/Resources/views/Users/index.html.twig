@@ -9,19 +9,7 @@
 {% block page_users %}active{% endblock %}
 
 {% block side_left %}
-    <div class="side-left">
-        <div class="wrap-block">
-            <div class="title"> <span class="glyphicon glyphicon-menu-hamburger"></span> Racourcis Utiisateur</div>
-            <div class="content">
-                    <ul>
-                        <li><a href="{{ path('whack_up_manage_user') }}"> <span class="glyphicon glyphicon-link"></span> Tous les utilisateurs</a></li>
-                        {% for role in listroles %}
-                            <li><a href="?group={{ role }}"> <span class="glyphicon glyphicon-link"></span> {{ role|lower|trim|replace({'ROLE': "", '_': " "}) }}</a></li>
-                        {% endfor %}
-                    </ul>
-            </div>
-        </div>
-    </div>
+    {{ render(controller("WhackUpManageBundle:Users:menuuser")) }}
 {% endblock %}
 
 {% block side_right %}
@@ -54,7 +42,13 @@
                                 {% endif %}
                             {% endfor %}
                         </td>
-                        <td class="last-login">{{ u.lastlogin|date('d F Y') }}</td>
+                        <td class="last-login">
+                            {% if u.lastlogin is empty %}
+                                <span style="color:coral">Jamais</span>
+                            {% else %}
+                                {{ u.lastlogin|date('d F Y') }}
+                            {% endif %}
+                        </td>
                         <td class="option"> <a href="{{ path('whack_up_manage_user_view', { 'id': u.id }) }}" title="Consulter" ><span class="glyphicon glyphicon-info-sign"> </span> </a> </td>
                     </tr>
                     {% endfor %}

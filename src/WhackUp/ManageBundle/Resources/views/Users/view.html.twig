@@ -1,60 +1,68 @@
 
 {# src/WhackUp/ManageBundle/Resources/views/Disco/view.html.twig #}
 
-{% extends "WhackUpManageBundle:Disco:index.html.twig" %}
+{% extends "WhackUpManageBundle:Users:index.html.twig" %}
 
 
-{% block title %}WhackUp | {{ disco.nom }}{% endblock %}
-
-
+{% block title %}WhackUp Utilisateur  | {{ user.username }}{% endblock %}
 
 {% block side_right %}
     <div class="side-right">
-        <div class="title"> {{ disco.nom|upper }} </div>
+        <div class="title">
+            {% if is_granted('ROLE_SUPER_ADMIN') == true %}
+                <span class="option">
+                    <a href="{{ path('whack_up_manage_user_grant',{ 'id': user.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Donner des droits </a>
+                </span>
+            {% endif %}
+            <span class="info">
+                {{ user.username|upper }}
+            </span>
+        </div>
         <div class="content">
-            <div class="view-disco">
-                <div class="view-top">
+            <div class="view-user">
+                <div class="view-left">
                     <div class="image-disco">
-                        {% if disco.image == null %}
-                            <img src="{{asset('bundles/whackup/file/disco/Tof-6.jpg') }}" />
+                        {% if user.image == null %}
+                            <img src="{{asset('bundles/whackup/file/profile/none.png') }}" />
                         {% else %}
-                            <img src="{{ asset(disco.image.uploadDir ~ '/' ~ disco.image.url) }}" alt="{{ disco.image.url }}" />
+                            <img src="{{ asset(user.image.uploadDir ~ '/' ~ user.image.url) }}" alt="{{ user.image.url }}" />
                         {% endif %}
                     </div>
-                    <div class="image-disco-modif">
-                        <a href="{{ path('whack_up_manage_edit_disco_image', { 'id': disco.id }) }}" >
-                            <span class="glyphicon glyphicon-picture"> </span> Modifier l'image
-                        </a>
-                        <br/>
-                        <a href="{{ path('whack_up_manage_edit_disco', { 'id': disco.id }) }}" title="Modifier" >
-                            <span class="glyphicon glyphicon-pencil"> </span> Modifier Informations
-                        </a>
-                    </div>
                 </div>
-                <div class="view-bottom">
+                <div class="view-right">
                     <div class="row">
-                        <div class="col-md-3">Nom : </div>
-                        <div class="col-md-9">{{ disco.nom }}</div>
+                        <div class="col-md-5">Login : </div>
+                        <div class="col-md-7">{{ user.username }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">Adresse : </div>
-                        <div class="col-md-9"> {{ disco.adresse }} </div>
+                        <div class="col-md-5">Email : </div>
+                        <div class="col-md-7"> {{ user.email }} </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">Complement d'adresse : </div>
-                        <div class="col-md-9">{{ disco.complement }}</div>
+                        <div class="col-md-5">Derni&eacute;re connexion: </div>
+                        <div class="col-md-7">
+                            {% if user.lastlogin is empty %}
+                              <span style="color:coral">Jamais</span>
+                            {% else %}
+                            {{ user.lastlogin|date('d F Y') }}
+                            {% endif %}
+                        </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">Site Web : </div>
-                        <div class="col-md-9"><a href="http:\\{{ disco.web }}">{{ disco.web }}</a></div>
+                        <div class="col-md-5">Disco favorites : </div>
+                        <div class="col-md-7"> {{ user.discos|length }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">Description : </div>
-                        <div class="col-md-9"><i>{{ disco.description }} </i></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3"></div>
-                        <div class="col-md-9">Ajout&eacute; le : {{ disco.created|date('d F Y') }} </div>
+                        <div class="col-md-5">Type de compte : </div>
+                        <div class="col-md-7 acount-type">
+                            {% for role in user.roles %}
+                                {% if loop.last %}
+                                    {{ role|trim|replace({'ROLE': "", '_': " "}) }}
+                                {% else %}
+                                    {{ role|trim|replace({'ROLE': "", '_': " "}) }},
+                                {% endif %}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
