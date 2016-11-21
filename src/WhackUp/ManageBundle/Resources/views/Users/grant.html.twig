@@ -1,0 +1,48 @@
+
+{# src/WhackUp/ManageBundle/Resources/views/Disco/view.html.twig #}
+
+{% extends "WhackUpManageBundle:Users:index.html.twig" %}
+
+
+{% block title %}WhackUp Utilisateur autorisation | {{ user.username }}{% endblock %}
+
+{% block side_right %}
+    <div class="side-right">
+        <div class="title">
+            <span class="option">
+                <a href="{{ path('whack_up_manage_user_view',{ 'id': user.id }) }}"><span class="glyphicon glyphicon-menu-left"></span> retour sur affichage {{ user.username|upper }}</a>
+            </span>
+        </div>
+        <div class="content">
+
+            <form action="{{ path('whack_up_manage_user_grant',{ 'id': user.id }) }} " class="form-grant">
+
+                <div>Selectionner un nouveau role : </div>
+                <div>
+                   {% for role in listroles %}
+                       <div class="right">
+                           <input type="checkbox" value="{{ role }}"> {{ role|trim|replace({'ROLE': "", '_': " "}) }}
+                       </div>
+                   {% endfor %}
+                </div>
+                <div>
+                    <input type="submit" value="Attribuer" >
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

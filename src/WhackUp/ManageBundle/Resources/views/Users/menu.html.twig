@@ -1,0 +1,30 @@
+
+{# src/WhackUp/ManageBundle/Resources/views/Disco/view.html.twig #}
+
+
+    <div class="side-left">
+        <div class="wrap-block">
+            <div class="title"> <span class="glyphicon glyphicon-menu-hamburger"></span> Racourcis Utiisateur</div>
+            <div class="content">
+                <ul>
+                    <li><a href="{{ path('whack_up_manage_user') }}"> <span class="glyphicon glyphicon-link"></span> Tous les utilisateurs</a></li>
+                    {% for role in listroles %}
+                        <li><a href="{{ path('whack_up_manage_user', {'group': role}) }}"> <span class="glyphicon glyphicon-link"></span> {{ role|lower|trim|replace({'ROLE': "", '_': " "}) }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
