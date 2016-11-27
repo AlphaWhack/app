@@ -82,6 +82,7 @@ body{
     list-style: none;
     padding-left:20px;
     margin-bottom: 0px;
+    font-variant: small-caps;
 }
 .other-link-infos ul li{}
 .other-link-infos ul li a{

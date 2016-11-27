@@ -54,6 +54,7 @@ header.m-header{
 	border:0px solid red;
 	line-height: 45px;
 	text-align: center;
+	font-variant: small-caps;
 }
 .wrap-side-header .header-right a{
 	text-decoration: none;
@@ -92,6 +93,7 @@ header.m-header{
 	top: -8%;
 	width: 100%;
 	line-height: 10px;
+	font-variant: small-caps;
 }
 .wrap-connexion .arrow-up {
 	width: 0;
@@ -132,6 +134,8 @@ header.m-header{
 }
 .wrap-connexion > form .m-form-valid .btn {
 	width: 70%;
+	font-variant: small-caps;
+	font-weight: bold;
 }
 .wrap-connexion > form .m-other-option{
 	margin-top: 20px;
@@ -172,6 +176,7 @@ header.m-header{
 	border:0px solid orange;
 	color:#fff;
 	font-size:28px;
+	font-variant: small-caps;
 }
 
 #main .portfolio {
@@ -370,6 +375,7 @@ admin
 	text-align:center;
 	color:#fff;
 	font-size:16px;
+	font-variant: small-caps;
 }
 .containt-connect-admin form{
 	width:90%;
@@ -382,6 +388,8 @@ admin
 .containt-connect-admin form .m-form-connect .btn{
 	background: #ffa500;
 	border:1px solid #ffa500;
+	font-variant: small-caps;
+	font-weight:bold;
 }
 
 .containt-connect-admin form .admin-connexion{
